@@ -16,6 +16,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import BackToTop from "@/components/BackToTop";
 import FadeIn from "@/components/FadeIn";
 import AnnouncementBar from "@/components/AnnouncementBar";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 
 const Index = () => {
   const location = useLocation();
