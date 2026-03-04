@@ -49,7 +49,6 @@ const FeatureGrid = () => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
-      transition={{ staggerChildren: 0.08 }}
     >
       {features.map(({ icon: Icon, title, desc, color, bg, border }) => (
         <motion.div key={title} variants={cardVariants}>
