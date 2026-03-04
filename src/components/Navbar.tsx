@@ -25,8 +25,7 @@ const Navbar = () => {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" className="text-foreground/80 hover:text-gold text-sm">Sign In</Button>
-          <Button variant="cta" size="sm">Get Started Free</Button>
+          <Button variant="cta" size="sm" onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}>Download App</Button>
         </div>
 
         {/* Mobile menu button */}
@@ -43,7 +42,7 @@ const Navbar = () => {
               {l}
             </a>
           ))}
-          <Button variant="cta" size="sm" className="w-full mt-2">Get Started Free</Button>
+          <Button variant="cta" size="sm" className="w-full mt-2" onClick={() => { setOpen(false); document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' }); }}>Download App</Button>
         </div>
       )}
     </nav>
