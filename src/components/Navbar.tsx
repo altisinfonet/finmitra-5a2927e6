@@ -64,6 +64,7 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
               <li key={l.label}>
                 <a
                   href={l.href}
+                  onClick={(e) => scrollToSection(e, l.href)}
                   className={`relative text-sm font-semibold tracking-widest uppercase transition-colors
                     ${isActive ? "text-gold" : "text-foreground/70 hover:text-gold"}
                   `}
