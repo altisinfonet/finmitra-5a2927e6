@@ -6,7 +6,7 @@ import { useState } from "react";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const links = ["Features", "How It Works", "Benefits", "Contact"];
+  const links = ["Features", "How It Works", "Benefits", "Plans"];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm">
@@ -17,7 +17,7 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <li key={l}>
-              <a href={`#${l.toLowerCase().replace(/\s+/g, "-")}`} className="text-foreground/70 hover:text-gold transition-colors text-sm font-semibold tracking-wide">
+              <a href={`#${l.toLowerCase().replace(/\s+/g, "-")}`} className="text-foreground/70 hover:text-gold transition-colors text-sm font-semibold tracking-widest uppercase">
                 {l}
               </a>
             </li>
