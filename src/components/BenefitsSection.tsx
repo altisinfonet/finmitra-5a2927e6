@@ -1,4 +1,4 @@
-import finmitraLogo from "@/assets/finmitra-logo.png";
+import benefitsIllustration from "@/assets/benefits-illustration.png";
 import { CheckCircle2 } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
