@@ -27,7 +27,7 @@ const CtaSection = () => {
           <Button variant="cta" size="lg" className="gap-2 text-base px-10">
             Start Free 14-Day Trial <ArrowRight size={18} />
           </Button>
-          <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 hover:text-white gap-2 text-base px-8">
+          <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy font-semibold gap-2 text-base px-8">
             <Smartphone size={18} /> Download App
           </Button>
         </div>
