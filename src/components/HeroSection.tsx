@@ -18,31 +18,56 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
           <div className="text-white">
-            <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6"
+            >
               <Star size={14} className="text-gold-light fill-gold-light" />
               <span className="text-gold-light text-xs font-bold tracking-widest uppercase">by Altis Infonet Pvt. Ltd.</span>
-            </div>
+            </motion.div>
 
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-display text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6"
+            >
               Your <span className="text-transparent bg-clip-text" style={{ backgroundImage: "var(--gradient-gold)" }}>Financial</span>{" "}
               <br />Friend. Always.
-            </h1>
+            </motion.h1>
 
-            <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="text-white/70 text-lg md:text-xl leading-relaxed mb-8 max-w-lg"
+            >
               The all-in-one CRM platform for insurance agents and financial product distributors. Manage clients, products, renewals, and grow your business — all from your phone.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap gap-4 mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex flex-wrap gap-4 mb-12"
+            >
               <Button variant="cta" size="lg" className="gap-2 text-base px-8">
                 Start Free Trial <ArrowRight size={18} />
               </Button>
               <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 hover:text-white text-base px-8">
                 Watch Demo
               </Button>
-            </div>
+            </motion.div>
 
             {/* Social proof */}
-            <div className="flex flex-wrap gap-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="flex flex-wrap gap-8"
+            >
               {[
                 { icon: Users, value: "10,000+", label: "Agents Onboarded" },
                 { icon: TrendingUp, value: "₹500Cr+", label: "Policies Managed" },
@@ -58,11 +83,16 @@ const HeroSection = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* Right — App mockup */}
-          <div className="flex justify-center lg:justify-end">
+          <motion.div
+            initial={{ opacity: 0, x: 60, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="flex justify-center lg:justify-end"
+          >
             <div className="relative">
               {/* Glow */}
               <div className="absolute inset-0 scale-110 rounded-3xl opacity-40" style={{ background: "var(--gradient-gold)", filter: "blur(40px)" }} />
@@ -102,7 +132,7 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
