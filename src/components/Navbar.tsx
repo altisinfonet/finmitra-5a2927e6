@@ -9,17 +9,15 @@ const Navbar = () => {
   const links = ["Features", "How It Works", "Benefits", "Contact"];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
-        <div className="bg-white rounded-xl px-3 py-1">
-          <img src={finmitraLogo} alt="FinMitra" className="h-8 w-auto" />
-        </div>
+        <img src={finmitraLogo} alt="FinMitra" className="h-10 w-auto" />
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <li key={l}>
-              <a href={`#${l.toLowerCase().replace(/\s+/g, "-")}`} className="text-white/80 hover:text-gold transition-colors text-sm font-semibold tracking-wide">
+              <a href={`#${l.toLowerCase().replace(/\s+/g, "-")}`} className="text-foreground/70 hover:text-gold transition-colors text-sm font-semibold tracking-wide">
                 {l}
               </a>
             </li>
@@ -27,7 +25,7 @@ const Navbar = () => {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" className="text-white hover:text-gold hover:bg-white/10 text-sm">Sign In</Button>
+          <Button variant="ghost" className="text-foreground/80 hover:text-gold text-sm">Sign In</Button>
           <Button variant="cta" size="sm">Get Started Free</Button>
         </div>
 
