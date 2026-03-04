@@ -75,11 +75,11 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex flex-wrap gap-4 mb-12"
             >
-              <Button variant="cta" size="lg" className="gap-2 text-base px-8">
-                Start Free Trial <ArrowRight size={18} />
+              <Button variant="cta" size="lg" className="gap-2 text-base px-8" onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}>
+                Download App <ArrowRight size={18} />
               </Button>
-              <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy font-semibold text-base px-8">
-                Watch Demo
+              <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy font-semibold text-base px-8" onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}>
+                Get it Free
               </Button>
             </motion.div>
 

@@ -24,11 +24,8 @@ const CtaSection = () => {
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <Button variant="cta" size="lg" className="gap-2 text-base px-10">
-            Start Free 14-Day Trial <ArrowRight size={18} />
-          </Button>
-          <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy font-semibold gap-2 text-base px-8">
-            <Smartphone size={18} /> Download App
+          <Button variant="cta" size="lg" className="gap-2 text-base px-10" onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}>
+            <Smartphone size={18} /> Download App <ArrowRight size={18} />
           </Button>
         </div>
 

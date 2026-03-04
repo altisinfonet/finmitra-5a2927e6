@@ -106,7 +106,7 @@ const PricingSection = () => {
                 ))}
               </ul>
 
-              <Button variant={highlight ? "cta" : "outline"} className={!highlight ? "border-navy text-navy hover:bg-navy/5" : ""}>
+              <Button variant={highlight ? "cta" : "outline"} className={!highlight ? "border-navy text-navy hover:bg-navy/5" : ""} onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}>
                 {cta}
               </Button>
             </div>
