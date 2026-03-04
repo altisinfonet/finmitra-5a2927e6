@@ -10,57 +10,65 @@ const features = [
     icon: Users,
     title: "Client & KYC Management",
     desc: "Maintain complete client profiles with KYC documents, contact details, and financial history — always at your fingertips.",
-    color: "text-navy",
-    bg: "bg-navy/10",
+    color: "text-blue-600",
+    bg: "bg-blue-50",
+    border: "border-blue-300",
   },
   {
     icon: ShieldCheck,
     title: "Multi-Product Portfolio",
     desc: "Manage FD, Life Insurance, General Insurance, Mutual Funds, Real Estate, and Loans all from one unified dashboard.",
-    color: "text-gold",
-    bg: "bg-gold/10",
+    color: "text-emerald-600",
+    bg: "bg-emerald-50",
+    border: "border-emerald-300",
   },
   {
     icon: Calendar,
     title: "Meeting Scheduler",
     desc: "Plan and track client meetings, follow-ups, and field visits. Never miss an important appointment again.",
-    color: "text-navy",
-    bg: "bg-navy/10",
+    color: "text-violet-600",
+    bg: "bg-violet-50",
+    border: "border-violet-300",
   },
   {
     icon: Bell,
     title: "Renewal Alerts & Reminders",
     desc: "Automated alerts before policy renewals so you can proactively reach clients and protect your renewal commissions.",
-    color: "text-gold",
-    bg: "bg-gold/10",
+    color: "text-orange-600",
+    bg: "bg-orange-50",
+    border: "border-orange-300",
   },
   {
     icon: Gift,
     title: "Birthday Greetings",
     desc: "Automated personalized birthday messages to every client — build stronger relationships without manual effort.",
-    color: "text-navy",
-    bg: "bg-navy/10",
+    color: "text-rose-600",
+    bg: "bg-rose-50",
+    border: "border-rose-300",
   },
   {
     icon: MessageSquare,
     title: "SMS Back to Caller",
     desc: "Instantly send product information or greetings via SMS to missed callers and leads to never lose a prospect.",
-    color: "text-gold",
-    bg: "bg-gold/10",
+    color: "text-cyan-600",
+    bg: "bg-cyan-50",
+    border: "border-cyan-300",
   },
   {
     icon: TrendingUp,
     title: "New Product Intimation",
     desc: "Get notified about new financial products and quickly broadcast them to relevant clients in your portfolio.",
-    color: "text-navy",
-    bg: "bg-navy/10",
+    color: "text-amber-600",
+    bg: "bg-amber-50",
+    border: "border-amber-300",
   },
   {
     icon: CreditCard,
     title: "Subscription-Based Access",
     desc: "Flexible multi-tenant subscription model — pay as you grow, with plans for individual agents and large agencies.",
-    color: "text-gold",
-    bg: "bg-gold/10",
+    color: "text-indigo-600",
+    bg: "bg-indigo-50",
+    border: "border-indigo-300",
   },
 ];
 
@@ -93,9 +101,9 @@ const FeaturesSection = () => {
 
         {/* Feature grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {features.map(({ icon: Icon, title, desc, color, bg }, i) => (
+          {features.map(({ icon: Icon, title, desc, color, bg, border }, i) => (
             <FadeIn key={title} delay={i * 0.07} direction="up">
-              <div className="group rounded-2xl border border-border p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full" style={{ background: "var(--gradient-card)" }}>
+              <div className={`group rounded-2xl border ${border} p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full`} style={{ background: "var(--gradient-card)" }}>
                 <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-4`}>
                   <Icon size={22} className={color} />
                 </div>
