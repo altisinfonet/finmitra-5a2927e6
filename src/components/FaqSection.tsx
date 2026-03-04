@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "Does FinMitra work without an internet connection?",
-    a: "FinMitra has an offline mode that lets you view client details, add notes, and log meetings without internet. All changes sync automatically once you're back online. This is especially useful in rural areas or during field visits.",
+    a: "FinMitra requires an active internet connection to function. All data is stored securely in the cloud, so a stable connection ensures your client information, renewal alerts, and sync are always up to date. We recommend using FinMitra on a reliable mobile data or Wi-Fi connection.",
   },
   {
     q: "How do renewal alerts and birthday greetings work?",
