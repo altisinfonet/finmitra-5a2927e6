@@ -2,6 +2,24 @@ import finmitraLogo from "@/assets/finmitra-logo.png";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Users, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
+import { useCountUp } from "@/hooks/useCountUp";
+
+const StatCounter = ({ value, suffix, label, icon: Icon }: { value: number; suffix: string; label: string; icon: React.ElementType }) => {
+  const { ref, count } = useCountUp(value, 2);
+  return (
+    <div ref={ref} className="flex items-center gap-3">
+      <div className="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center">
+        <Icon size={18} className="text-gold" />
+      </div>
+      <div>
+        <div className="text-white font-bold text-lg leading-tight">
+          {count.toLocaleString("en-IN")}{suffix}
+        </div>
+        <div className="text-white/50 text-xs">{label}</div>
+      </div>
+    </div>
+  );
+};
 
 const HeroSection = () => {
   return (
