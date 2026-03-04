@@ -35,7 +35,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm">
+    <nav className="fixed top-[30px] left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         <a href="/"><img src={finmitraLogo} alt="FinMitra" className="h-7 w-auto" fetchPriority="high" decoding="async" /></a>
 
