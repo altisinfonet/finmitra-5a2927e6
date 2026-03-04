@@ -116,7 +116,7 @@ const HeroSection = () => {
                 style={{ marginBottom: "2rem" }}
               >
                 <div className="w-44 rounded-[2rem] overflow-hidden shadow-2xl border-2 border-white/20 ring-1 ring-white/10" style={{ boxShadow: "0 30px 80px rgba(0,0,0,0.5)" }}>
-                  <img src={appOnboardingDark} alt="FinMitra Dark Mode" className="w-full object-cover" />
+                  <img src={appOnboardingDark} alt="FinMitra Dark Mode" className="w-full object-cover" fetchPriority="high" decoding="async" />
                 </div>
               </motion.div>
 
@@ -128,7 +128,7 @@ const HeroSection = () => {
                 className="relative z-10"
               >
                 <div className="w-52 rounded-[2rem] overflow-hidden shadow-2xl border-2 border-white/30 ring-1 ring-white/20" style={{ boxShadow: "0 40px 100px rgba(0,0,0,0.6)" }}>
-                  <img src={appOnboardingLight} alt="FinMitra App" className="w-full object-cover" />
+                  <img src={appOnboardingLight} alt="FinMitra App" className="w-full object-cover" fetchPriority="high" decoding="async" />
                 </div>
               </motion.div>
             </div>

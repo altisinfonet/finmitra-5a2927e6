@@ -25,10 +25,10 @@ const DownloadSection = () => {
         <FadeIn className="flex justify-center gap-6 mb-16">
           <div className="flex gap-4 items-end">
             <div className="w-36 sm:w-44 rounded-[2rem] overflow-hidden shadow-2xl border border-border" style={{ boxShadow: "0 30px 80px hsl(var(--primary)/0.2)" }}>
-              <img src={appSigninLight} alt="FinMitra Sign In" className="w-full object-cover" />
+              <img src={appSigninLight} alt="FinMitra Sign In" className="w-full object-cover" loading="lazy" decoding="async" />
             </div>
             <div className="w-36 sm:w-44 rounded-[2rem] overflow-hidden shadow-2xl border border-border mb-6" style={{ boxShadow: "0 30px 80px hsl(var(--primary)/0.2)" }}>
-              <img src={appSigninDark} alt="FinMitra Sign In Dark" className="w-full object-cover" />
+              <img src={appSigninDark} alt="FinMitra Sign In Dark" className="w-full object-cover" loading="lazy" decoding="async" />
             </div>
           </div>
         </FadeIn>

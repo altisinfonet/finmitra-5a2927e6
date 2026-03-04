@@ -116,10 +116,10 @@ const FeaturesSection = () => {
             </div>
             <div className="flex gap-4 items-end flex-shrink-0">
               <div className="w-36 md:w-44 rounded-[2rem] overflow-hidden shadow-2xl border-2 border-white/20" style={{ boxShadow: "0 30px 80px rgba(0,0,0,0.5)" }}>
-                <img src={appDashboardDark} alt="FinMitra Dashboard Dark" className="w-full object-cover" />
+                <img src={appDashboardDark} alt="FinMitra Dashboard Dark" className="w-full object-cover" loading="lazy" decoding="async" />
               </div>
               <div className="w-36 md:w-44 rounded-[2rem] overflow-hidden shadow-2xl border-2 border-white/30 mb-6" style={{ boxShadow: "0 40px 100px rgba(0,0,0,0.5)" }}>
-                <img src={appDashboardLight} alt="FinMitra Dashboard Light" className="w-full object-cover" />
+                <img src={appDashboardLight} alt="FinMitra Dashboard Light" className="w-full object-cover" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>

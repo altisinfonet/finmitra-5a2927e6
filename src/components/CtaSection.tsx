@@ -11,7 +11,7 @@ const CtaSection = () => {
       </div>
 
       <div className="container mx-auto px-4 text-center relative">
-        <img src={finmitraLogo} alt="FinMitra" className="h-16 w-auto mx-auto mb-6 drop-shadow-2xl" />
+        <img src={finmitraLogo} alt="FinMitra" className="h-16 w-auto mx-auto mb-6 drop-shadow-2xl" loading="lazy" decoding="async" />
 
         <h2 className="font-display text-4xl md:text-5xl font-black text-white mb-4">
           Ready to Grow Your{" "}
