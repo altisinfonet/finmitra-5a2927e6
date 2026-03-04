@@ -7,7 +7,7 @@ interface NavbarProps {
   barOffset?: number;
 }
 
-const Navbar = () => {
+const Navbar = ({ barOffset = 0 }: NavbarProps) => {
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
