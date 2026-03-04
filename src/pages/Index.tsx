@@ -27,6 +27,7 @@ const Index = () => {
       <ScreenshotMarquee />
       <CtaSection />
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 };
