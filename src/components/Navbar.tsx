@@ -37,9 +37,9 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-navy border-t border-white/10 px-4 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t border-border px-4 py-4 flex flex-col gap-4">
           {links.map((l) => (
-            <a key={l} href={`#${l.toLowerCase().replace(/\s+/g, "-")}`} onClick={() => setOpen(false)} className="text-white/80 hover:text-gold text-sm font-semibold">
+            <a key={l} href={`#${l.toLowerCase().replace(/\s+/g, "-")}`} onClick={() => setOpen(false)} className="text-foreground/80 hover:text-gold text-sm font-semibold">
               {l}
             </a>
           ))}
