@@ -1,7 +1,8 @@
 import finmitraLogo from "@/assets/finmitra-logo.png";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavbarProps {
   barOffset?: number;
