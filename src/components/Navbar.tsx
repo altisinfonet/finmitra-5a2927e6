@@ -75,11 +75,20 @@ const Navbar = () => {
       {/* Mobile/tablet menu */}
       {open && (
         <div className="lg:hidden bg-white border-t border-border px-4 py-4 flex flex-col gap-4">
-          {links.map((l) => (
-            <a key={l.label} href={l.href} onClick={() => setOpen(false)} className="text-foreground/80 hover:text-gold text-sm font-semibold">
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const sectionId = l.href.replace("/#", "");
+            const isActive = activeSection === sectionId;
+            return (
+              <a
+                key={l.label}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className={`text-sm font-semibold transition-colors ${isActive ? "text-gold" : "text-foreground/80 hover:text-gold"}`}
+              >
+                {l.label}
+              </a>
+            );
+          })}
           <Button variant="cta" size="sm" className="w-full mt-2" onClick={() => { setOpen(false); window.location.href = '/#download'; }}>Download App</Button>
         </div>
       )}
