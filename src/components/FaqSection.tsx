@@ -2,6 +2,17 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import FadeIn from "@/components/FadeIn";
 import { HelpCircle } from "lucide-react";
 
+const gradients = [
+  "from-amber-50 to-yellow-50 dark:from-amber-950/20 dark:to-yellow-950/20",
+  "from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20",
+  "from-emerald-50 to-teal-50 dark:from-emerald-950/20 dark:to-teal-950/20",
+  "from-rose-50 to-pink-50 dark:from-rose-950/20 dark:to-pink-950/20",
+  "from-violet-50 to-purple-50 dark:from-violet-950/20 dark:to-purple-950/20",
+  "from-orange-50 to-amber-50 dark:from-orange-950/20 dark:to-amber-950/20",
+  "from-cyan-50 to-sky-50 dark:from-cyan-950/20 dark:to-sky-950/20",
+  "from-lime-50 to-green-50 dark:from-lime-950/20 dark:to-green-950/20",
+];
+
 const faqs = [
   {
     q: "Is there a free trial available?",
@@ -60,7 +71,7 @@ const FaqSection = () => {
               <AccordionItem
                 key={i}
                 value={`faq-${i}`}
-                className="bg-card border border-border rounded-2xl px-6 shadow-sm data-[state=open]:border-primary/40 data-[state=open]:shadow-md transition-all duration-200"
+                className={`bg-gradient-to-r ${gradients[i % gradients.length]} border border-border rounded-2xl px-6 shadow-sm data-[state=open]:border-primary/40 data-[state=open]:shadow-md transition-all duration-200`}
               >
                 <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-5 text-sm md:text-base">
                   {faq.q}
