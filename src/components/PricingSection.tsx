@@ -57,7 +57,7 @@ const plans = [
 
 const PricingSection = () => {
   return (
-    <section id="contact" className="py-24 bg-muted/50">
+    <section id="plans" className="py-24 bg-muted/50">
       <div className="container mx-auto px-4">
         <FadeIn className="text-center mb-16">
           <span className="inline-block bg-gold-pale text-gold font-bold text-xs tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
