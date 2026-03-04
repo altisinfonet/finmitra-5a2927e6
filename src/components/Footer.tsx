@@ -12,7 +12,7 @@ const Footer = () => {
 
           {/* Brand col */}
           <div className="md:col-span-6">
-            <img src={finmitraLogo} alt="FinMitra" className="h-8 w-auto mb-3 brightness-0 invert" loading="lazy" decoding="async" />
+            <img src={finmitraLogo} alt="FinMitra" className="h-5 w-auto mb-3 brightness-0 invert" loading="lazy" decoding="async" />
             <p className="text-xs leading-relaxed mb-5 max-w-xs text-white/50">
               FinMitra is a product of Altis Infonet Private Limited — empowering insurance agents and financial distributors across India.
             </p>
