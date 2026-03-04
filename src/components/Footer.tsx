@@ -1,5 +1,5 @@
 import finmitraLogo from "@/assets/finmitra-logo.png";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -16,6 +16,22 @@ const Footer = () => {
             <p className="text-xs leading-relaxed mb-5 max-w-xs text-white/50">
               FinMitra is a product of Altis Infonet Private Limited — empowering insurance agents and financial distributors across India.
             </p>
+
+            {/* Social icons */}
+            <div className="flex items-center gap-2 mb-5">
+              {[
+                { href: "https://www.facebook.com", icon: Facebook, label: "Facebook" },
+                { href: "https://www.instagram.com", icon: Instagram, label: "Instagram" },
+                { href: "https://www.linkedin.com", icon: Linkedin, label: "LinkedIn" },
+                { href: "https://www.youtube.com", icon: Youtube, label: "YouTube" },
+                { href: "https://www.x.com", icon: Twitter, label: "X" },
+              ].map(({ href, icon: Icon, label }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                  className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white/60 hover:text-white">
+                  <Icon size={14} />
+                </a>
+              ))}
+            </div>
 
             {/* Contact details */}
             <div className="space-y-2.5">
