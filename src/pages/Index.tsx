@@ -34,6 +34,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <AnnouncementBar />
       <Navbar />
       <HeroSection />
       <FadeIn threshold={0.1}><FeaturesSection /></FadeIn>
