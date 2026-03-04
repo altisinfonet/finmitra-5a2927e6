@@ -8,70 +8,14 @@ import appDashboardDark from "@/assets/app-dashboard-dark.png";
 import appDashboardLight from "@/assets/app-dashboard-light.png";
 
 const features = [
-  {
-    icon: Users,
-    title: "Client & KYC Management",
-    desc: "Maintain complete client profiles with KYC documents, contact details, and financial history — always at your fingertips.",
-    color: "text-blue-600",
-    bg: "bg-blue-50",
-    border: "border-blue-300",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Multi-Product Portfolio",
-    desc: "Manage FD, Life Insurance, General Insurance, Mutual Funds, Real Estate, and Loans all from one unified dashboard.",
-    color: "text-emerald-600",
-    bg: "bg-emerald-50",
-    border: "border-emerald-300",
-  },
-  {
-    icon: Calendar,
-    title: "Meeting Scheduler",
-    desc: "Plan and track client meetings, follow-ups, and field visits. Never miss an important appointment again.",
-    color: "text-violet-600",
-    bg: "bg-violet-50",
-    border: "border-violet-300",
-  },
-  {
-    icon: Bell,
-    title: "Renewal Alerts & Reminders",
-    desc: "Automated alerts before policy renewals so you can proactively reach clients and protect your renewal commissions.",
-    color: "text-orange-600",
-    bg: "bg-orange-50",
-    border: "border-orange-300",
-  },
-  {
-    icon: Gift,
-    title: "Birthday Greetings",
-    desc: "Automated personalized birthday messages to every client — build stronger relationships without manual effort.",
-    color: "text-rose-600",
-    bg: "bg-rose-50",
-    border: "border-rose-300",
-  },
-  {
-    icon: MessageSquare,
-    title: "SMS Back to Caller",
-    desc: "Instantly send product information or greetings via SMS to missed callers and leads to never lose a prospect.",
-    color: "text-cyan-600",
-    bg: "bg-cyan-50",
-    border: "border-cyan-300",
-  },
-  {
-    icon: TrendingUp,
-    title: "New Product Intimation",
-    desc: "Get notified about new financial products and quickly broadcast them to relevant clients in your portfolio.",
-    color: "text-amber-600",
-    bg: "bg-amber-50",
-    border: "border-amber-300",
-  },
-  {
-    icon: CreditCard,
-    title: "Subscription-Based Access",
-    desc: "Flexible multi-tenant subscription model — pay as you grow, with plans for individual agents and large agencies.",
-    color: "text-indigo-600",
-    bg: "bg-indigo-50",
-    border: "border-indigo-300",
-  },
+  { icon: Users, title: "Client & KYC Management", desc: "Maintain complete client profiles with KYC documents, contact details, and financial history — always at your fingertips.", color: "text-blue-600", bg: "bg-blue-50", border: "border-blue-300" },
+  { icon: ShieldCheck, title: "Multi-Product Portfolio", desc: "Manage FD, Life Insurance, General Insurance, Mutual Funds, Real Estate, and Loans all from one unified dashboard.", color: "text-emerald-600", bg: "bg-emerald-50", border: "border-emerald-300" },
+  { icon: Calendar, title: "Meeting Scheduler", desc: "Plan and track client meetings, follow-ups, and field visits. Never miss an important appointment again.", color: "text-violet-600", bg: "bg-violet-50", border: "border-violet-300" },
+  { icon: Bell, title: "Renewal Alerts & Reminders", desc: "Automated alerts before policy renewals so you can proactively reach clients and protect your renewal commissions.", color: "text-orange-600", bg: "bg-orange-50", border: "border-orange-300" },
+  { icon: Gift, title: "Birthday Greetings", desc: "Automated personalized birthday messages to every client — build stronger relationships without manual effort.", color: "text-rose-600", bg: "bg-rose-50", border: "border-rose-300" },
+  { icon: MessageSquare, title: "SMS Back to Caller", desc: "Instantly send product information or greetings via SMS to missed callers and leads to never lose a prospect.", color: "text-cyan-600", bg: "bg-cyan-50", border: "border-cyan-300" },
+  { icon: TrendingUp, title: "New Product Intimation", desc: "Get notified about new financial products and quickly broadcast them to relevant clients in your portfolio.", color: "text-amber-600", bg: "bg-amber-50", border: "border-amber-300" },
+  { icon: CreditCard, title: "Subscription-Based Access", desc: "Flexible multi-tenant subscription model — pay as you grow, with plans for individual agents and large agencies.", color: "text-indigo-600", bg: "bg-indigo-50", border: "border-indigo-300" },
 ];
 
 const products = [
@@ -83,6 +27,43 @@ const products = [
   { icon: Handshake, label: "Loans", bg: "bg-amber-100", text: "text-amber-700", border: "border-amber-200" },
   { icon: Building2, label: "Corporate Plans", bg: "bg-cyan-100", text: "text-cyan-700", border: "border-cyan-200" },
 ];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+};
+
+const FeatureGrid = () => {
+  const { ref, isInView } = useScrollAnimation(0.1);
+  return (
+    <motion.div
+      ref={ref}
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
+    >
+      {features.map(({ icon: Icon, title, desc, color, bg, border }) => (
+        <motion.div key={title} variants={cardVariants}>
+          <div className={`group rounded-2xl border ${border} p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full`} style={{ background: "var(--gradient-card)" }}>
+            <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-4`}>
+              <Icon size={22} className={color} />
+            </div>
+            <h3 className="font-bold text-foreground text-base mb-2">{title}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+};
 
 const FeaturesSection = () => {
   return (
@@ -101,13 +82,8 @@ const FeaturesSection = () => {
           </p>
         </FadeIn>
 
-        {/* Feature grid */}
-        <div className="mb-20">
-          {(() => {
-            const { ref, isInView } = useScrollAnimation(0.1);
-            return null; // can't use hooks here
-          })()}
-        </div>
+        {/* Feature grid with stagger */}
+        <FeatureGrid />
 
         {/* App Screenshots Showcase */}
         <FadeIn className="mb-20">
