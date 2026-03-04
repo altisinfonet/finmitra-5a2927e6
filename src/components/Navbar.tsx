@@ -80,7 +80,7 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
-          <Button variant="cta" size="sm" onClick={() => window.location.href = '/#download'}>Download App</Button>
+          <Button variant="cta" size="sm" onClick={() => { const el = document.getElementById('download'); el ? el.scrollIntoView({ behavior: 'smooth', block: 'start' }) : (window.location.href = '/#download'); }}>Download App</Button>
         </div>
 
         {/* Mobile/tablet menu button */}
