@@ -4,8 +4,10 @@ import { ArrowRight, Star, Users, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCountUp } from "@/hooks/useCountUp";
 
-const StatCounter = ({ value, suffix, label, icon: Icon }: { value: number; suffix: string; label: string; icon: React.ElementType }) => {
+const StatCounter = ({ value, suffix, label, icon: Icon, prefix = "" }: { value: number; suffix: string; label: string; icon: React.ElementType; prefix?: string }) => {
   const { ref, count } = useCountUp(value, 2);
+  const isFloat = value % 1 !== 0;
+  const display = isFloat ? count.toFixed(1) : count.toLocaleString("en-IN");
   return (
     <div ref={ref} className="flex items-center gap-3">
       <div className="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center">
@@ -13,7 +15,7 @@ const StatCounter = ({ value, suffix, label, icon: Icon }: { value: number; suff
       </div>
       <div>
         <div className="text-white font-bold text-lg leading-tight">
-          {count.toLocaleString("en-IN")}{suffix}
+          {prefix}{display}{suffix}
         </div>
         <div className="text-white/50 text-xs">{label}</div>
       </div>
