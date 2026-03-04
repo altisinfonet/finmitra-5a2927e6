@@ -39,11 +39,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Spacer */}
-          <div className="hidden md:block md:col-span-2" />
-
           {/* Product */}
-          <div className="md:col-span-4">
+          <div className="md:col-span-3">
             <h4 className="text-white/90 font-bold mb-4 text-xs uppercase tracking-widest">Product</h4>
             <ul className="space-y-2 text-xs">
               {[
@@ -55,6 +52,16 @@ const Footer = () => {
                 <li key={label}>
                   <a href={href} className="hover:text-white transition-colors">{label}</a>
                 </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div className="md:col-span-3">
+            <h4 className="text-white/90 font-bold mb-4 text-xs uppercase tracking-widest">Company</h4>
+            <ul className="space-y-2 text-xs">
+              {["About Us", "Privacy Policy", "Terms of Service", "Contact"].map((l) => (
+                <li key={l}><a href="#" className="hover:text-white transition-colors">{l}</a></li>
               ))}
             </ul>
           </div>
