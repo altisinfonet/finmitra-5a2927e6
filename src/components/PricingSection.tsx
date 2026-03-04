@@ -169,7 +169,7 @@ const PricingSection = () => {
                 ${billing === "yearly" ? "bg-foreground text-background shadow" : "text-foreground/60 hover:text-foreground"}`}
             >
               Yearly
-              <span className="absolute -top-2.5 -right-2 bg-emerald-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full tracking-wide">
+              <span className="absolute -top-2.5 -right-2 bg-[hsl(var(--gold))] text-white text-[9px] font-black px-1.5 py-0.5 rounded-full tracking-wide">
                 -20%
               </span>
             </button>
