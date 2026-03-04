@@ -16,6 +16,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import BackToTop from "@/components/BackToTop";
 import FadeIn from "@/components/FadeIn";
 import AnnouncementBar from "@/components/AnnouncementBar";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 
 const Index = () => {
   const location = useLocation();
@@ -35,6 +36,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <ScrollProgressBar />
       {barVisible && <AnnouncementBar onDismiss={() => setBarVisible(false)} />}
       <Navbar barOffset={barVisible ? 30 : 0} />
       <HeroSection />
