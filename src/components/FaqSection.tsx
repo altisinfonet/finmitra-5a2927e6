@@ -71,7 +71,7 @@ const FaqSection = () => {
               <AccordionItem
                 key={i}
                 value={`faq-${i}`}
-                className="bg-card border border-border rounded-2xl px-6 shadow-sm data-[state=open]:border-primary/40 data-[state=open]:shadow-md transition-all duration-200"
+                className={`bg-gradient-to-r ${gradients[i % gradients.length]} border border-border rounded-2xl px-6 shadow-sm data-[state=open]:border-primary/40 data-[state=open]:shadow-md transition-all duration-200`}
               >
                 <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-5 text-sm md:text-base">
                   {faq.q}
