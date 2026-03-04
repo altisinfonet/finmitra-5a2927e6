@@ -1,4 +1,6 @@
 import finmitraLogo from "@/assets/finmitra-logo.png";
+import appOnboardingLight from "@/assets/app-onboarding-light.png";
+import appOnboardingDark from "@/assets/app-onboarding-dark.png";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Users, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
@@ -94,51 +96,41 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Right — App mockup */}
+          {/* Right — Real App Screenshots */}
           <motion.div
             initial={{ opacity: 0, x: 60, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex justify-center lg:justify-end"
           >
-            <div className="relative">
-              {/* Glow */}
-              <div className="absolute inset-0 scale-110 rounded-3xl opacity-40" style={{ background: "var(--gradient-gold)", filter: "blur(40px)" }} />
+            <div className="relative flex gap-4 items-end">
+              {/* Glow behind phones */}
+              <div className="absolute inset-0 scale-110 rounded-3xl opacity-30" style={{ background: "var(--gradient-gold)", filter: "blur(60px)" }} />
 
-              {/* Phone frame */}
-              <div className="relative w-72 bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 p-4 shadow-2xl">
-                <div className="bg-navy-light rounded-2xl p-4 space-y-3">
-                  {/* Header */}
-                  <div className="flex items-center justify-between">
-                    <img src={finmitraLogo} alt="FinMitra" className="h-8 w-auto" />
-                    <div className="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center">
-                      <Users size={14} className="text-gold" />
-                    </div>
-                  </div>
-
-                  {/* Stats cards */}
-                  <div className="grid grid-cols-2 gap-2">
-                    {[
-                      { label: "Clients", value: "248", color: "bg-gold/20 text-gold" },
-                      { label: "Renewals Due", value: "12", color: "bg-red-500/20 text-red-300" },
-                      { label: "Meetings Today", value: "3", color: "bg-green-500/20 text-green-300" },
-                      { label: "Active Plans", value: "56", color: "bg-blue-400/20 text-blue-300" },
-                    ].map(({ label, value, color }) => (
-                      <div key={label} className={`rounded-xl p-3 ${color.split(" ")[0]}`}>
-                        <div className={`text-xl font-black ${color.split(" ")[1]}`}>{value}</div>
-                        <div className="text-white/60 text-xs">{label}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Recent activity */}
-                  <div className="space-y-2">
-                    {["🎂 Ramesh Kumar - Birthday today", "🔔 LIC Policy #4521 renews in 3 days", "📋 KYC pending - Priya Sharma"].map((item) => (
-                      <div key={item} className="bg-white/5 rounded-lg px-3 py-2 text-white/70 text-xs">{item}</div>
-                    ))}
-                  </div>
+              {/* Back phone — dark theme */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="relative hidden sm:block"
+                style={{ marginBottom: "2rem" }}
+              >
+                <div className="w-44 rounded-[2rem] overflow-hidden shadow-2xl border-2 border-white/20 ring-1 ring-white/10" style={{ boxShadow: "0 30px 80px rgba(0,0,0,0.5)" }}>
+                  <img src={appOnboardingDark} alt="FinMitra Dark Mode" className="w-full object-cover" />
                 </div>
-              </div>
+              </motion.div>
+
+              {/* Front phone — light theme, slightly bigger */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="relative z-10"
+              >
+                <div className="w-52 rounded-[2rem] overflow-hidden shadow-2xl border-2 border-white/30 ring-1 ring-white/20" style={{ boxShadow: "0 40px 100px rgba(0,0,0,0.6)" }}>
+                  <img src={appOnboardingLight} alt="FinMitra App" className="w-full object-cover" />
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>

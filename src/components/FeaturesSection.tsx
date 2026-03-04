@@ -2,6 +2,8 @@ import {
   Users, ShieldCheck, Calendar, Bell, CreditCard, Gift, MessageSquare, TrendingUp, Building2, Landmark, Home, Handshake
 } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import appDashboardDark from "@/assets/app-dashboard-dark.png";
+import appDashboardLight from "@/assets/app-dashboard-light.png";
 
 const features = [
   {
@@ -103,6 +105,25 @@ const FeaturesSection = () => {
             </FadeIn>
           ))}
         </div>
+
+        {/* App Screenshots Showcase */}
+        <FadeIn className="mb-20">
+          <div className="rounded-3xl overflow-hidden border border-border p-8 md:p-12 flex flex-col md:flex-row items-center gap-10" style={{ background: "var(--gradient-hero)" }}>
+            <div className="text-white flex-1 text-center md:text-left">
+              <span className="inline-block bg-gold/20 text-gold-light font-bold text-xs tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">Real App Screens</span>
+              <h3 className="font-display text-3xl md:text-4xl font-black mb-4">A Powerful Dashboard in Your Pocket</h3>
+              <p className="text-white/60 text-base leading-relaxed max-w-md">Track leads, meetings, to-dos, and client activity — all from a clean, intuitive mobile interface.</p>
+            </div>
+            <div className="flex gap-4 items-end flex-shrink-0">
+              <div className="w-36 md:w-44 rounded-[2rem] overflow-hidden shadow-2xl border-2 border-white/20" style={{ boxShadow: "0 30px 80px rgba(0,0,0,0.5)" }}>
+                <img src={appDashboardDark} alt="FinMitra Dashboard Dark" className="w-full object-cover" />
+              </div>
+              <div className="w-36 md:w-44 rounded-[2rem] overflow-hidden shadow-2xl border-2 border-white/30 mb-6" style={{ boxShadow: "0 40px 100px rgba(0,0,0,0.5)" }}>
+                <img src={appDashboardLight} alt="FinMitra Dashboard Light" className="w-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </FadeIn>
 
         {/* Products supported */}
         <FadeIn className="text-center mb-8">

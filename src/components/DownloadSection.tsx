@@ -1,6 +1,8 @@
 import { Smartphone, QrCode } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import finmitraLogo from "@/assets/finmitra-logo.png";
+import appSigninLight from "@/assets/app-signin-light.png";
+import appSigninDark from "@/assets/app-signin-dark.png";
 
 const DownloadSection = () => {
   return (
@@ -17,6 +19,18 @@ const DownloadSection = () => {
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             Available on Android and iOS. Manage your entire financial business from your pocket.
           </p>
+        </FadeIn>
+
+        {/* Phone Screenshots */}
+        <FadeIn className="flex justify-center gap-6 mb-16">
+          <div className="flex gap-4 items-end">
+            <div className="w-36 sm:w-44 rounded-[2rem] overflow-hidden shadow-2xl border border-border" style={{ boxShadow: "0 30px 80px hsl(var(--primary)/0.2)" }}>
+              <img src={appSigninLight} alt="FinMitra Sign In" className="w-full object-cover" />
+            </div>
+            <div className="w-36 sm:w-44 rounded-[2rem] overflow-hidden shadow-2xl border border-border mb-6" style={{ boxShadow: "0 30px 80px hsl(var(--primary)/0.2)" }}>
+              <img src={appSigninDark} alt="FinMitra Sign In Dark" className="w-full object-cover" />
+            </div>
+          </div>
         </FadeIn>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
@@ -120,7 +134,7 @@ const DownloadSection = () => {
 
         {/* Feature chips */}
         <FadeIn delay={0.3} className="flex flex-wrap justify-center gap-3 mt-14">
-          {["Free to Download", "14-Day Free Trial", "No Credit Card", "Offline Mode", "Auto Sync", "Secure & Encrypted"].map((f) => (
+          {["Free to Download", "14-Day Free Trial", "No Credit Card", "Cloud Sync", "Auto Sync", "Secure & Encrypted"].map((f) => (
             <span key={f} className="bg-primary/10 text-primary text-xs font-semibold px-4 py-2 rounded-full border border-primary/20">
               ✓ {f}
             </span>
