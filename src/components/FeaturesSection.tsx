@@ -77,7 +77,7 @@ const FeaturesSection = () => {
     <section id="features" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Heading */}
-        <div className="text-center mb-16">
+        <FadeIn className="text-center mb-16">
           <span className="inline-block bg-gold-pale text-gold font-bold text-xs tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
             Powerful Features
           </span>
@@ -87,34 +87,38 @@ const FeaturesSection = () => {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             FinMitra is purpose-built for financial distributors — with every tool you need to serve clients, close deals, and grow revenue.
           </p>
-        </div>
+        </FadeIn>
 
         {/* Feature grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {features.map(({ icon: Icon, title, desc, color, bg }) => (
-            <div key={title} className="group rounded-2xl border border-border p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300" style={{ background: "var(--gradient-card)" }}>
-              <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-4`}>
-                <Icon size={22} className={color} />
+          {features.map(({ icon: Icon, title, desc, color, bg }, i) => (
+            <FadeIn key={title} delay={i * 0.07} direction="up">
+              <div className="group rounded-2xl border border-border p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full" style={{ background: "var(--gradient-card)" }}>
+                <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-4`}>
+                  <Icon size={22} className={color} />
+                </div>
+                <h3 className="font-bold text-foreground text-base mb-2">{title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
               </div>
-              <h3 className="font-bold text-foreground text-base mb-2">{title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
-            </div>
+            </FadeIn>
           ))}
         </div>
 
         {/* Products supported */}
-        <div className="text-center mb-8">
+        <FadeIn className="text-center mb-8">
           <h3 className="font-display text-2xl font-black text-primary mb-2">Products Supported</h3>
           <p className="text-muted-foreground text-sm">Manage all financial products under one roof</p>
-        </div>
-        <div className="flex flex-wrap justify-center gap-4">
-          {products.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-2 bg-navy/5 border border-navy/15 rounded-full px-5 py-2.5">
-              <Icon size={16} className="text-navy" />
-              <span className="text-navy font-semibold text-sm">{label}</span>
-            </div>
-          ))}
-        </div>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <div className="flex flex-wrap justify-center gap-4">
+            {products.map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-2 bg-navy/5 border border-navy/15 rounded-full px-5 py-2.5">
+                <Icon size={16} className="text-navy" />
+                <span className="text-navy font-semibold text-sm">{label}</span>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

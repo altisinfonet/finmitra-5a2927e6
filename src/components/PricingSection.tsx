@@ -59,7 +59,7 @@ const PricingSection = () => {
   return (
     <section id="contact" className="py-24 bg-muted/50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <FadeIn className="text-center mb-16">
           <span className="inline-block bg-gold-pale text-gold font-bold text-xs tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
             Subscription Plans
           </span>
@@ -69,10 +69,11 @@ const PricingSection = () => {
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             Start free for 14 days. No credit card required. Cancel anytime.
           </p>
-        </div>
+        </FadeIn>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {plans.map(({ name, price, period, desc, features, cta, highlight }) => (
+          {plans.map(({ name, price, period, desc, features, cta, highlight }, i) => (
+            <FadeIn key={name} delay={i * 0.15}>
             <div
               key={name}
               className={`relative rounded-2xl border p-8 flex flex-col transition-all duration-300 ${
