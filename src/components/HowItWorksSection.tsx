@@ -1,4 +1,5 @@
 import FadeIn from "@/components/FadeIn";
+import { StaggerContainer, StaggerItem } from "@/components/StaggerContainer";
 
 const steps = [
   {
@@ -42,15 +43,14 @@ const HowItWorksSection = () => {
           </p>
         </FadeIn>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8" stagger={0.15}>
           {steps.map(({ number, title, desc }, i) => (
-            <FadeIn key={number} delay={i * 0.15} direction="up">
+            <StaggerItem key={number}>
               <div className="relative">
                 {/* Connector line */}
                 {i < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-8 left-[calc(100%_-_0px)] w-full h-px border-t-2 border-dashed border-gold/30 z-0" style={{ width: "calc(100% - 2rem)", left: "calc(50% + 2rem)" }} />
                 )}
-
                 <div className="relative z-10 text-center">
                   <div className="w-16 h-16 rounded-2xl mx-auto mb-5 flex items-center justify-center text-2xl font-black border-2 border-gold/40" style={{ background: "linear-gradient(135deg, hsl(32,72%,46%,0.2), hsl(36,85%,62%,0.1))", color: "hsl(var(--gold-light))" }}>
                     {number}
@@ -59,9 +59,9 @@ const HowItWorksSection = () => {
                   <p className="text-white/60 text-sm leading-relaxed">{desc}</p>
                 </div>
               </div>
-            </FadeIn>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
 
       {/* Bottom wave */}
