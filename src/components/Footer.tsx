@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
 
           {/* Company */}
-          <div className="md:col-span-3">
+          <div className="col-span-1 md:col-span-3">
             <h4 className="text-white/90 font-bold mb-4 text-xs uppercase tracking-widest">Company</h4>
             <ul className="space-y-2 text-xs">
           {[
