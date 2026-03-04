@@ -14,6 +14,8 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
 
+  const navListRef = useRef<HTMLUListElement>(null);
+
   useEffect(() => {
     const sectionIds = ["features", "how-it-works", "benefits", "plans"];
     const observers: IntersectionObserver[] = [];
@@ -33,6 +35,23 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
 
     return () => observers.forEach((o) => o.disconnect());
   }, []);
+
+  // Update sliding indicator position whenever activeSection changes
+  useEffect(() => {
+    const activeEl = linkRefs.current[activeSection];
+    const navEl = navListRef.current;
+    if (activeEl && navEl) {
+      const navRect = navEl.getBoundingClientRect();
+      const linkRect = activeEl.getBoundingClientRect();
+      setIndicatorStyle({
+        left: linkRect.left - navRect.left,
+        width: linkRect.width,
+        opacity: 1,
+      });
+    } else {
+      setIndicatorStyle((s) => ({ ...s, opacity: 0 }));
+    }
+  }, [activeSection]);
 
   const links = [
     { label: "Features", href: "/#features" },
@@ -59,13 +78,25 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
         <a href="/"><img src={finmitraLogo} alt="FinMitra" className="h-7 w-auto" fetchPriority="high" decoding="async" /></a>
 
         {/* Desktop links */}
-        <ul className="hidden lg:flex items-center gap-8">
+        <ul ref={navListRef} className="hidden lg:flex items-center gap-8 relative">
+          {/* Sliding underline indicator */}
+          <motion.div
+            className="absolute -bottom-[1px] h-0.5 rounded-full bg-gold pointer-events-none"
+            animate={{
+              left: indicatorStyle.left,
+              width: indicatorStyle.width,
+              opacity: indicatorStyle.opacity,
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 35 }}
+          />
+
           {links.map((l) => {
             const sectionId = l.href.replace("/#", "");
             const isActive = activeSection === sectionId;
             return (
               <li key={l.label}>
                 <a
+                  ref={(el) => { linkRefs.current[sectionId] = el; }}
                   href={l.href}
                   onClick={(e) => scrollToSection(e, l.href)}
                   className={`relative text-sm font-semibold tracking-widest uppercase transition-colors
@@ -73,9 +104,6 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
                   `}
                 >
                   {l.label}
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-gold" />
-                  )}
                 </a>
               </li>
             );
@@ -93,25 +121,33 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
       </div>
 
       {/* Mobile/tablet menu */}
-      {open && (
-        <div className="lg:hidden bg-white border-t border-border px-4 py-4 flex flex-col gap-4">
-          {links.map((l) => {
-            const sectionId = l.href.replace("/#", "");
-            const isActive = activeSection === sectionId;
-            return (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={(e) => { scrollToSection(e, l.href); setOpen(false); }}
-                className={`text-sm font-semibold transition-colors ${isActive ? "text-gold" : "text-foreground/80 hover:text-gold"}`}
-              >
-                {l.label}
-              </a>
-            );
-          })}
-          <Button variant="cta" size="sm" className="w-full mt-2" onClick={() => { setOpen(false); window.location.href = '/#download'; }}>Download App</Button>
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="lg:hidden bg-white border-t border-border px-4 py-4 flex flex-col gap-4 overflow-hidden"
+          >
+            {links.map((l) => {
+              const sectionId = l.href.replace("/#", "");
+              const isActive = activeSection === sectionId;
+              return (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={(e) => { scrollToSection(e, l.href); setOpen(false); }}
+                  className={`text-sm font-semibold transition-colors ${isActive ? "text-gold" : "text-foreground/80 hover:text-gold"}`}
+                >
+                  {l.label}
+                </a>
+              );
+            })}
+            <Button variant="cta" size="sm" className="w-full mt-2" onClick={() => { setOpen(false); const el = document.getElementById('download'); el ? el.scrollIntoView({ behavior: 'smooth', block: 'start' }) : (window.location.href = '/#download'); }}>Download App</Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
