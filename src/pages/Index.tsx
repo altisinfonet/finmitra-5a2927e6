@@ -13,6 +13,7 @@ import CtaSection from "@/components/CtaSection";
 import ScreenshotMarquee from "@/components/ScreenshotMarquee";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import BackToTop from "@/components/BackToTop";
 
 const Index = () => {
   const location = useLocation();
@@ -45,6 +46,7 @@ const Index = () => {
       <CtaSection />
       <Footer />
       <WhatsAppFloat />
+      <BackToTop />
     </div>
   );
 };
