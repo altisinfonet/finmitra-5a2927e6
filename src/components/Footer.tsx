@@ -31,12 +31,6 @@ const Footer = () => {
                 </span>
                 <span>mail@altisinfonet.com</span>
               </a>
-              <div className="flex items-center gap-2.5 text-xs">
-                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white/10">
-                  <MapPin size={13} className="text-[hsl(var(--gold-light))]" />
-                </span>
-                <span className="text-white/50">India</span>
-              </div>
             </div>
           </div>
 
