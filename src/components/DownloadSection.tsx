@@ -134,7 +134,7 @@ const DownloadSection = () => {
 
         {/* Feature chips */}
         <FadeIn delay={0.3} className="flex flex-wrap justify-center gap-3 mt-14">
-          {["Free to Download", "14-Day Free Trial", "No Credit Card", "Offline Mode", "Auto Sync", "Secure & Encrypted"].map((f) => (
+          {["Free to Download", "14-Day Free Trial", "No Credit Card", "Cloud Sync", "Auto Sync", "Secure & Encrypted"].map((f) => (
             <span key={f} className="bg-primary/10 text-primary text-xs font-semibold px-4 py-2 rounded-full border border-primary/20">
               ✓ {f}
             </span>
