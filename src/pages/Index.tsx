@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -15,9 +15,11 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import BackToTop from "@/components/BackToTop";
 import FadeIn from "@/components/FadeIn";
+import AnnouncementBar from "@/components/AnnouncementBar";
 
 const Index = () => {
   const location = useLocation();
+  const [barVisible, setBarVisible] = useState(true);
 
   useEffect(() => {
     const hash = location.hash;
@@ -33,7 +35,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      {barVisible && <AnnouncementBar onDismiss={() => setBarVisible(false)} />}
+      <Navbar barOffset={barVisible ? 30 : 0} />
       <HeroSection />
       <FadeIn threshold={0.1}><FeaturesSection /></FadeIn>
       <FadeIn threshold={0.1} delay={0.05}><HowItWorksSection /></FadeIn>
