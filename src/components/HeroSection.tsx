@@ -89,7 +89,7 @@ const HeroSection = () => {
               className="flex flex-wrap gap-8"
             >
               <StatCounter value={10000} suffix="+" label="Agents Onboarded" icon={Users} />
-              <StatCounter value={500} suffix="Cr+" label="Policies Managed" icon={TrendingUp} />
+              <StatCounter value={500} suffix="Cr+" prefix="₹" label="Policies Managed" icon={TrendingUp} />
               <StatCounter value={4.9} suffix="★" label="App Store Rating" icon={Star} />
             </motion.div>
           </div>
