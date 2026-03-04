@@ -5,6 +5,7 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import FaqSection from "@/components/FaqSection";
 import DownloadSection from "@/components/DownloadSection";
 import CtaSection from "@/components/CtaSection";
 import Footer from "@/components/Footer";
