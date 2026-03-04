@@ -86,21 +86,9 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="flex flex-wrap gap-8"
             >
-              {[
-                { icon: Users, value: "10,000+", label: "Agents Onboarded" },
-                { icon: TrendingUp, value: "₹500Cr+", label: "Policies Managed" },
-                { icon: Star, value: "4.9★", label: "App Store Rating" },
-              ].map(({ icon: Icon, value, label }) => (
-                <div key={label} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center">
-                    <Icon size={18} className="text-gold" />
-                  </div>
-                  <div>
-                    <div className="text-white font-bold text-lg leading-tight">{value}</div>
-                    <div className="text-white/50 text-xs">{label}</div>
-                  </div>
-                </div>
-              ))}
+              <StatCounter value={10000} suffix="+" label="Agents Onboarded" icon={Users} />
+              <StatCounter value={500} suffix="Cr+" label="Policies Managed" icon={TrendingUp} />
+              <StatCounter value={4.9} suffix="★" label="App Store Rating" icon={Star} />
             </motion.div>
           </div>
 
