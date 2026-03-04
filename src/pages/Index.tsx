@@ -35,8 +35,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <AnnouncementBar />
-      <Navbar />
+      {barVisible && <AnnouncementBar onDismiss={() => setBarVisible(false)} />}
+      <Navbar barOffset={barVisible ? 30 : 0} />
       <HeroSection />
       <FadeIn threshold={0.1}><FeaturesSection /></FadeIn>
       <FadeIn threshold={0.1} delay={0.05}><HowItWorksSection /></FadeIn>
