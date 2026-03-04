@@ -10,6 +10,7 @@ import DownloadSection from "@/components/DownloadSection";
 import CtaSection from "@/components/CtaSection";
 import ScreenshotMarquee from "@/components/ScreenshotMarquee";
 import Footer from "@/components/Footer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
       <ScreenshotMarquee />
       <CtaSection />
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 };
