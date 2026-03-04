@@ -8,10 +8,10 @@ const Footer = () => {
       <div className="container mx-auto px-4">
 
         {/* Top grid */}
-        <div className="grid md:grid-cols-12 gap-10 mb-5">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-10 mb-5">
 
           {/* Brand col */}
-          <div className="md:col-span-6">
+          <div className="col-span-2 md:col-span-6">
             <img src={finmitraLogo} alt="FinMitra" className="h-5 w-auto mb-3 brightness-0 invert" loading="lazy" decoding="async" />
             <p className="text-xs leading-relaxed mb-5 max-w-xs text-white/50">
               FinMitra is a product of Altis Infonet Private Limited — empowering insurance agents and financial distributors across India.
@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
 
           {/* Product */}
-          <div className="md:col-span-3">
+          <div className="col-span-1 md:col-span-3">
             <h4 className="text-white/90 font-bold mb-4 text-xs uppercase tracking-widest">Product</h4>
             <ul className="space-y-2 text-xs">
               {[
@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
 
           {/* Company */}
-          <div className="md:col-span-3">
+          <div className="col-span-1 md:col-span-3">
             <h4 className="text-white/90 font-bold mb-4 text-xs uppercase tracking-widest">Company</h4>
             <ul className="space-y-2 text-xs">
           {[
