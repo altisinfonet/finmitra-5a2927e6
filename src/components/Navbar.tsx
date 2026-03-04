@@ -17,7 +17,7 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <li key={l}>
-              <a href={`#${l.toLowerCase().replace(/\s+/g, "-")}`} className="text-foreground/70 hover:text-gold transition-colors text-sm font-semibold tracking-wide">
+              <a href={`#${l.toLowerCase().replace(/\s+/g, "-")}`} className="text-foreground/70 hover:text-gold transition-colors text-sm font-semibold tracking-widest uppercase">
                 {l}
               </a>
             </li>
