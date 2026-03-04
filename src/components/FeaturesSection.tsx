@@ -102,18 +102,11 @@ const FeaturesSection = () => {
         </FadeIn>
 
         {/* Feature grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {features.map(({ icon: Icon, title, desc, color, bg, border }, i) => (
-            <FadeIn key={title} delay={i * 0.07} direction="up">
-              <div className={`group rounded-2xl border ${border} p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full`} style={{ background: "var(--gradient-card)" }}>
-                <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-4`}>
-                  <Icon size={22} className={color} />
-                </div>
-                <h3 className="font-bold text-foreground text-base mb-2">{title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
-              </div>
-            </FadeIn>
-          ))}
+        <div className="mb-20">
+          {(() => {
+            const { ref, isInView } = useScrollAnimation(0.1);
+            return null; // can't use hooks here
+          })()}
         </div>
 
         {/* App Screenshots Showcase */}
