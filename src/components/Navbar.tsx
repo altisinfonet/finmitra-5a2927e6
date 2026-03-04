@@ -11,7 +11,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/10">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
-        <img src={finmitraLogo} alt="FinMitra" className="h-10 w-auto" />
+        <div className="bg-white rounded-xl px-3 py-1">
+          <img src={finmitraLogo} alt="FinMitra" className="h-8 w-auto" />
+        </div>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
