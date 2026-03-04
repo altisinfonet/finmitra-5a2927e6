@@ -72,8 +72,8 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-white/35">© 2026 Altis Infonet Private Limited. All rights reserved.</p>
-          <a href="https://www.altisinfonet.com" target="_blank" rel="noopener noreferrer" className="text-xs text-white/35 hover:text-white/70 transition-colors">www.altisinfonet.com</a>
+          <p className="text-xs text-white/35">© {new Date().getFullYear()} Altis Infonet Private Limited. All rights reserved.</p>
+          <p className="text-xs text-white/35">Made with ❤️ for India's Financial Agents</p>
         </div>
       </div>
     </footer>
