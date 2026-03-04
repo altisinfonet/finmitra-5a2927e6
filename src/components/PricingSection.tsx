@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import FadeIn from "@/components/FadeIn";
 
 const plans = [
   {

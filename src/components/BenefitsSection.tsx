@@ -1,5 +1,6 @@
 import finmitraLogo from "@/assets/finmitra-logo.png";
 import { CheckCircle2 } from "lucide-react";
+import FadeIn from "@/components/FadeIn";
 
 const benefits = [
   "Never miss a renewal — automated alerts weeks in advance",

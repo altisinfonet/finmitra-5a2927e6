@@ -1,3 +1,5 @@
+import FadeIn from "@/components/FadeIn";
+
 const steps = [
   {
     number: "01",

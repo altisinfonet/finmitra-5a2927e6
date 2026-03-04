@@ -1,6 +1,7 @@
 import finmitraLogo from "@/assets/finmitra-logo.png";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Users, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
