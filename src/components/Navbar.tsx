@@ -6,7 +6,12 @@ import { useState } from "react";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const links = ["Features", "How It Works", "Benefits", "Plans"];
+  const links = [
+    { label: "Features", href: "/#features" },
+    { label: "How It Works", href: "/#how-it-works" },
+    { label: "Benefits", href: "/#benefits" },
+    { label: "Plans", href: "/#plans" },
+  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm">
