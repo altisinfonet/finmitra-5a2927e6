@@ -14,6 +14,7 @@ import ScreenshotMarquee from "@/components/ScreenshotMarquee";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import BackToTop from "@/components/BackToTop";
+import FadeIn from "@/components/FadeIn";
 
 const Index = () => {
   const location = useLocation();
@@ -21,7 +22,6 @@ const Index = () => {
   useEffect(() => {
     const hash = location.hash;
     if (!hash) return;
-    // Small delay to let the page render before scrolling
     const timer = setTimeout(() => {
       const el = document.querySelector(hash);
       if (el) {
@@ -35,15 +35,15 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <HeroSection />
-      <FeaturesSection />
-      <HowItWorksSection />
-      <BenefitsSection />
-      <PricingSection />
-      <TestimonialsSection />
-      <FaqSection />
-      <DownloadSection />
-      <ScreenshotMarquee />
-      <CtaSection />
+      <FadeIn threshold={0.1}><FeaturesSection /></FadeIn>
+      <FadeIn threshold={0.1} delay={0.05}><HowItWorksSection /></FadeIn>
+      <FadeIn threshold={0.1}><BenefitsSection /></FadeIn>
+      <FadeIn threshold={0.1} delay={0.05}><PricingSection /></FadeIn>
+      <FadeIn threshold={0.1}><TestimonialsSection /></FadeIn>
+      <FadeIn threshold={0.1} delay={0.05}><FaqSection /></FadeIn>
+      <FadeIn threshold={0.1}><DownloadSection /></FadeIn>
+      <FadeIn threshold={0.1}><ScreenshotMarquee /></FadeIn>
+      <FadeIn threshold={0.1}><CtaSection /></FadeIn>
       <Footer />
       <WhatsAppFloat />
       <BackToTop />
@@ -52,3 +52,4 @@ const Index = () => {
 };
 
 export default Index;
+
