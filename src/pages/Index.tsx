@@ -46,6 +46,7 @@ const Index = () => {
       <CtaSection />
       <Footer />
       <WhatsAppFloat />
+      <BackToTop />
     </div>
   );
 };
