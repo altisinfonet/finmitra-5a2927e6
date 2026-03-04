@@ -136,6 +136,27 @@ const HeroSection = () => {
         </div>
       </div>
 
+      {/* Scroll down arrow */}
+      <motion.button
+        onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+        aria-label="Scroll down"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-white/50 hover:text-white transition-colors cursor-pointer group"
+      >
+        <span className="text-xs font-semibold tracking-widest uppercase">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+          className="w-7 h-7 rounded-full border border-white/30 group-hover:border-white/60 flex items-center justify-center transition-colors"
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </motion.div>
+      </motion.button>
+
       {/* Wave divider */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
