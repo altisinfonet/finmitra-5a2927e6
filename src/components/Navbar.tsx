@@ -38,6 +38,18 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
     { label: "Plans", href: "/#plans" },
   ];
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const id = href.replace("/#", "");
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.pushState(null, "", href);
+    } else {
+      window.location.href = href;
+    }
+  };
+
   return (
     <nav style={{ top: `${barOffset}px` }} className="fixed left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm transition-[top] duration-300">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
@@ -52,6 +64,7 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
               <li key={l.label}>
                 <a
                   href={l.href}
+                  onClick={(e) => scrollToSection(e, l.href)}
                   className={`relative text-sm font-semibold tracking-widest uppercase transition-colors
                     ${isActive ? "text-gold" : "text-foreground/70 hover:text-gold"}
                   `}
@@ -67,7 +80,7 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
-          <Button variant="cta" size="sm" onClick={() => window.location.href = '/#download'}>Download App</Button>
+          <Button variant="cta" size="sm" onClick={() => { const el = document.getElementById('download'); el ? el.scrollIntoView({ behavior: 'smooth', block: 'start' }) : (window.location.href = '/#download'); }}>Download App</Button>
         </div>
 
         {/* Mobile/tablet menu button */}
@@ -86,7 +99,7 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
               <a
                 key={l.label}
                 href={l.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => { scrollToSection(e, l.href); setOpen(false); }}
                 className={`text-sm font-semibold transition-colors ${isActive ? "text-gold" : "text-foreground/80 hover:text-gold"}`}
               >
                 {l.label}
