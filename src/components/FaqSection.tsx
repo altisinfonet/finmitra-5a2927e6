@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import FadeIn from "@/components/FadeIn";
+import { StaggerContainer, StaggerItem } from "@/components/StaggerContainer";
 import { HelpCircle } from "lucide-react";
 
 const gradients = [
@@ -61,28 +62,30 @@ const FaqSection = () => {
             Got <span className="text-transparent bg-clip-text" style={{ backgroundImage: "var(--gradient-gold)" }}>Questions?</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Everything you need to know about FinMitra. Can't find the answer? <a href="#" className="text-primary hover:underline font-semibold">Contact our team.</a>
+            Everything you need to know about FinMitra. Can't find the answer?{" "}
+            <a href="#" className="text-primary hover:underline font-semibold">Contact our team.</a>
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.1}>
+        <StaggerContainer stagger={0.07}>
           <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className={`bg-gradient-to-r ${gradients[i % gradients.length]} border border-border rounded-2xl px-6 shadow-sm data-[state=open]:border-primary/40 data-[state=open]:shadow-md transition-all duration-200`}
-              >
-                <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-5 text-sm md:text-base">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
+              <StaggerItem key={i}>
+                <AccordionItem
+                  value={`faq-${i}`}
+                  className={`bg-gradient-to-r ${gradients[i % gradients.length]} border border-border rounded-2xl px-6 shadow-sm data-[state=open]:border-primary/40 data-[state=open]:shadow-md transition-all duration-200`}
+                >
+                  <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-5 text-sm md:text-base">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              </StaggerItem>
             ))}
           </Accordion>
-        </FadeIn>
+        </StaggerContainer>
       </div>
     </section>
   );
