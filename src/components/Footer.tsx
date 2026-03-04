@@ -20,14 +20,14 @@ const Footer = () => {
             {/* Social icons */}
             <div className="flex items-center gap-2 mb-5">
               {[
-                { href: "https://www.facebook.com", icon: Facebook, label: "Facebook" },
-                { href: "https://www.instagram.com", icon: Instagram, label: "Instagram" },
-                { href: "https://www.linkedin.com", icon: Linkedin, label: "LinkedIn" },
-                { href: "https://www.youtube.com", icon: Youtube, label: "YouTube" },
-                { href: "https://www.x.com", icon: Twitter, label: "X" },
-              ].map(({ href, icon: Icon, label }) => (
+                { href: "https://www.facebook.com", icon: Facebook, label: "Facebook", hoverBg: "hover:bg-[#1877F2]", hoverText: "hover:text-white" },
+                { href: "https://www.instagram.com", icon: Instagram, label: "Instagram", hoverBg: "hover:bg-[#E1306C]", hoverText: "hover:text-white" },
+                { href: "https://www.linkedin.com", icon: Linkedin, label: "LinkedIn", hoverBg: "hover:bg-[#0A66C2]", hoverText: "hover:text-white" },
+                { href: "https://www.youtube.com", icon: Youtube, label: "YouTube", hoverBg: "hover:bg-[#FF0000]", hoverText: "hover:text-white" },
+                { href: "https://www.x.com", icon: Twitter, label: "X", hoverBg: "hover:bg-white", hoverText: "hover:text-black" },
+              ].map(({ href, icon: Icon, label, hoverBg, hoverText }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white/60 hover:text-white">
+                  className={`flex items-center justify-center w-8 h-8 rounded-full bg-white/10 transition-colors text-white/60 ${hoverBg} ${hoverText}`}>
                   <Icon size={14} />
                 </a>
               ))}
