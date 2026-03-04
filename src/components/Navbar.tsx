@@ -38,6 +38,18 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
     { label: "Plans", href: "/#plans" },
   ];
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const id = href.replace("/#", "");
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.pushState(null, "", href);
+    } else {
+      window.location.href = href;
+    }
+  };
+
   return (
     <nav style={{ top: `${barOffset}px` }} className="fixed left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm transition-[top] duration-300">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
