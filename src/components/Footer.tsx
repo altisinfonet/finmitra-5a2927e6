@@ -35,7 +35,7 @@ const Footer = () => {
                 <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white/10">
                   <MapPin size={13} className="text-[hsl(var(--gold-light))]" />
                 </span>
-                <span className="text-white/50">Altis Infonet Pvt. Ltd., India</span>
+                <span className="text-white/50">India</span>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
+        <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-xs text-white/35">© {new Date().getFullYear()} Altis Infonet Private Limited. All rights reserved.</p>
           <p className="text-xs text-white/35">Made with ❤️ for India's Financial Agents</p>
         </div>
