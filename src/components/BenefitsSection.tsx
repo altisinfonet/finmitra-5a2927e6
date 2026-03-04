@@ -65,7 +65,7 @@ const BenefitsSection = () => {
             <div className="flex flex-col items-center justify-center gap-8">
               <div className="relative">
                 <div className="absolute inset-0 scale-110 rounded-3xl opacity-30" style={{ background: "var(--gradient-gold)", filter: "blur(40px)" }} />
-                <img src={finmitraLogo} alt="FinMitra" className="relative w-64 h-auto drop-shadow-2xl" loading="lazy" decoding="async" />
+                <img src={benefitsIllustration} alt="FinMitra financial advisor using CRM app" className="relative w-full max-w-sm h-auto drop-shadow-2xl rounded-2xl" loading="lazy" decoding="async" />
               </div>
               <div className="text-center">
                 <p className="font-display text-2xl font-black text-primary">FinMitra</p>
