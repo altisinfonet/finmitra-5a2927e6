@@ -1,10 +1,31 @@
 import finmitraLogo from "@/assets/finmitra-logo.png";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const sectionIds = ["features", "how-it-works", "benefits", "plans"];
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
 
   const links = [
     { label: "Features", href: "/#features" },
@@ -20,13 +41,25 @@ const Navbar = () => {
 
         {/* Desktop links */}
         <ul className="hidden lg:flex items-center gap-8">
-          {links.map((l) => (
-            <li key={l.label}>
-              <a href={l.href} className="text-foreground/70 hover:text-gold transition-colors text-sm font-semibold tracking-widest uppercase">
-                {l.label}
-              </a>
-            </li>
-          ))}
+          {links.map((l) => {
+            const sectionId = l.href.replace("/#", "");
+            const isActive = activeSection === sectionId;
+            return (
+              <li key={l.label}>
+                <a
+                  href={l.href}
+                  className={`relative text-sm font-semibold tracking-widest uppercase transition-colors
+                    ${isActive ? "text-gold" : "text-foreground/70 hover:text-gold"}
+                  `}
+                >
+                  {l.label}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-gold" />
+                  )}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
@@ -42,11 +75,20 @@ const Navbar = () => {
       {/* Mobile/tablet menu */}
       {open && (
         <div className="lg:hidden bg-white border-t border-border px-4 py-4 flex flex-col gap-4">
-          {links.map((l) => (
-            <a key={l.label} href={l.href} onClick={() => setOpen(false)} className="text-foreground/80 hover:text-gold text-sm font-semibold">
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const sectionId = l.href.replace("/#", "");
+            const isActive = activeSection === sectionId;
+            return (
+              <a
+                key={l.label}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className={`text-sm font-semibold transition-colors ${isActive ? "text-gold" : "text-foreground/80 hover:text-gold"}`}
+              >
+                {l.label}
+              </a>
+            );
+          })}
           <Button variant="cta" size="sm" className="w-full mt-2" onClick={() => { setOpen(false); window.location.href = '/#download'; }}>Download App</Button>
         </div>
       )}
