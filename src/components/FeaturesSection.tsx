@@ -132,10 +132,10 @@ const FeaturesSection = () => {
         </FadeIn>
         <FadeIn delay={0.1}>
           <div className="flex flex-wrap justify-center gap-4">
-            {products.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 bg-navy/5 border border-navy/15 rounded-full px-5 py-2.5">
-                <Icon size={16} className="text-navy" />
-                <span className="text-navy font-semibold text-sm">{label}</span>
+            {products.map(({ icon: Icon, label, bg, text, border }) => (
+              <div key={label} className={`flex items-center gap-2 ${bg} border ${border} rounded-full px-5 py-2.5`}>
+                <Icon size={16} className={text} />
+                <span className={`${text} font-semibold text-sm`}>{label}</span>
               </div>
             ))}
           </div>
