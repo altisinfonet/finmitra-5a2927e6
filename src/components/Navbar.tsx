@@ -99,7 +99,7 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
               <a
                 key={l.label}
                 href={l.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => { scrollToSection(e, l.href); setOpen(false); }}
                 className={`text-sm font-semibold transition-colors ${isActive ? "text-gold" : "text-foreground/80 hover:text-gold"}`}
               >
                 {l.label}
