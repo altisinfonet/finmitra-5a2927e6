@@ -36,6 +36,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <ScrollProgressBar />
       {barVisible && <AnnouncementBar onDismiss={() => setBarVisible(false)} />}
       <Navbar barOffset={barVisible ? 30 : 0} />
       <HeroSection />
