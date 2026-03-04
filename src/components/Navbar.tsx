@@ -41,13 +41,25 @@ const Navbar = () => {
 
         {/* Desktop links */}
         <ul className="hidden lg:flex items-center gap-8">
-          {links.map((l) => (
-            <li key={l.label}>
-              <a href={l.href} className="text-foreground/70 hover:text-gold transition-colors text-sm font-semibold tracking-widest uppercase">
-                {l.label}
-              </a>
-            </li>
-          ))}
+          {links.map((l) => {
+            const sectionId = l.href.replace("/#", "");
+            const isActive = activeSection === sectionId;
+            return (
+              <li key={l.label}>
+                <a
+                  href={l.href}
+                  className={`relative text-sm font-semibold tracking-widest uppercase transition-colors
+                    ${isActive ? "text-gold" : "text-foreground/70 hover:text-gold"}
+                  `}
+                >
+                  {l.label}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-gold" />
+                  )}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
