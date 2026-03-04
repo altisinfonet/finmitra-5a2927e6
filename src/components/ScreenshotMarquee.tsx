@@ -52,34 +52,17 @@ const ScreenshotMarquee = () => {
         </motion.div>
       </div>
 
-      {/* Marquee row 1 — left to right */}
-      <div className="relative mb-6">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, hsl(214, 68%, 14%), transparent)" }} />
-        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, hsl(214, 68%, 14%), transparent)" }} />
-
-        <motion.div
-          className="flex items-end"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        >
-          {allScreenshots.map((s, i) => (
-            <PhoneFrame key={i} src={s.src} label={s.label} />
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Marquee row 2 — right to left (offset) */}
+      {/* Single marquee row */}
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, hsl(214, 68%, 14%), transparent)" }} />
         <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, hsl(214, 68%, 14%), transparent)" }} />
 
         <motion.div
           className="flex items-end"
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
         >
-          {[...allScreenshots].reverse().map((s, i) => (
+          {allScreenshots.map((s, i) => (
             <PhoneFrame key={i} src={s.src} label={s.label} />
           ))}
         </motion.div>
