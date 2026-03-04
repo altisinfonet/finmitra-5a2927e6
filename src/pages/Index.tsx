@@ -35,7 +35,7 @@ const Index = () => {
   }, [location.hash]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <ScrollProgressBar />
       {barVisible && <AnnouncementBar onDismiss={() => setBarVisible(false)} />}
       <Navbar barOffset={barVisible ? 30 : 0} />
