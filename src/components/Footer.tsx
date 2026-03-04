@@ -55,6 +55,16 @@ const Footer = () => {
               ))}
             </ul>
           </div>
+
+          {/* Company */}
+          <div className="md:col-span-3">
+            <h4 className="text-white/90 font-bold mb-4 text-xs uppercase tracking-widest">Company</h4>
+            <ul className="space-y-2 text-xs">
+              {["About Us", "Privacy Policy", "Terms of Service", "Contact"].map((l) => (
+                <li key={l}><a href="#" className="hover:text-white transition-colors">{l}</a></li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Bottom bar */}
