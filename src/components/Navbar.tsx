@@ -11,6 +11,8 @@ interface NavbarProps {
 const Navbar = ({ barOffset = 0 }: NavbarProps) => {
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
 
   useEffect(() => {
     const sectionIds = ["features", "how-it-works", "benefits", "plans"];
