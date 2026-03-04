@@ -103,7 +103,7 @@ const FeaturesSection = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {features.map(({ icon: Icon, title, desc, color, bg }, i) => (
             <FadeIn key={title} delay={i * 0.07} direction="up">
-              <div className="group rounded-2xl border border-border p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full" style={{ background: "var(--gradient-card)" }}>
+              <div className={`group rounded-2xl border ${feature.border} p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full`} style={{ background: "var(--gradient-card)" }}>
                 <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-4`}>
                   <Icon size={22} className={color} />
                 </div>
