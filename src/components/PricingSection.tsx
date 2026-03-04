@@ -110,6 +110,7 @@ const PricingSection = () => {
                 {cta}
               </Button>
             </div>
+            </FadeIn>
           ))}
         </div>
       </div>
