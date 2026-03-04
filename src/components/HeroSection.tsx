@@ -1,0 +1,118 @@
+import finmitraLogo from "@/assets/finmitra-logo.png";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Star, Users, TrendingUp } from "lucide-react";
+
+const HeroSection = () => {
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
+      {/* Background decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-10 w-96 h-96 rounded-full opacity-10" style={{ background: "var(--gradient-gold)", filter: "blur(80px)" }} />
+        <div className="absolute bottom-20 left-10 w-64 h-64 rounded-full bg-white/5" style={{ filter: "blur(60px)" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/5" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/5" />
+      </div>
+
+      <div className="container mx-auto px-4 pt-24 pb-16 relative">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left */}
+          <div className="text-white">
+            <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
+              <Star size={14} className="text-gold-light fill-gold-light" />
+              <span className="text-gold-light text-xs font-bold tracking-widest uppercase">by Altis Infonet Pvt. Ltd.</span>
+            </div>
+
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
+              Your <span className="text-transparent bg-clip-text" style={{ backgroundImage: "var(--gradient-gold)" }}>Financial</span>{" "}
+              <br />Friend. Always.
+            </h1>
+
+            <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
+              The all-in-one CRM platform for insurance agents and financial product distributors. Manage clients, products, renewals, and grow your business — all from your phone.
+            </p>
+
+            <div className="flex flex-wrap gap-4 mb-12">
+              <Button variant="cta" size="lg" className="gap-2 text-base px-8">
+                Start Free Trial <ArrowRight size={18} />
+              </Button>
+              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 hover:text-white text-base px-8">
+                Watch Demo
+              </Button>
+            </div>
+
+            {/* Social proof */}
+            <div className="flex flex-wrap gap-8">
+              {[
+                { icon: Users, value: "10,000+", label: "Agents Onboarded" },
+                { icon: TrendingUp, value: "₹500Cr+", label: "Policies Managed" },
+                { icon: Star, value: "4.9★", label: "App Store Rating" },
+              ].map(({ icon: Icon, value, label }) => (
+                <div key={label} className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center">
+                    <Icon size={18} className="text-gold" />
+                  </div>
+                  <div>
+                    <div className="text-white font-bold text-lg leading-tight">{value}</div>
+                    <div className="text-white/50 text-xs">{label}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right — App mockup */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative">
+              {/* Glow */}
+              <div className="absolute inset-0 scale-110 rounded-3xl opacity-40" style={{ background: "var(--gradient-gold)", filter: "blur(40px)" }} />
+
+              {/* Phone frame */}
+              <div className="relative w-72 bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 p-4 shadow-2xl">
+                <div className="bg-navy-light rounded-2xl p-4 space-y-3">
+                  {/* Header */}
+                  <div className="flex items-center justify-between">
+                    <img src={finmitraLogo} alt="FinMitra" className="h-8 w-auto" />
+                    <div className="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center">
+                      <Users size={14} className="text-gold" />
+                    </div>
+                  </div>
+
+                  {/* Stats cards */}
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { label: "Clients", value: "248", color: "bg-gold/20 text-gold" },
+                      { label: "Renewals Due", value: "12", color: "bg-red-500/20 text-red-300" },
+                      { label: "Meetings Today", value: "3", color: "bg-green-500/20 text-green-300" },
+                      { label: "Active Plans", value: "56", color: "bg-blue-400/20 text-blue-300" },
+                    ].map(({ label, value, color }) => (
+                      <div key={label} className={`rounded-xl p-3 ${color.split(" ")[0]}`}>
+                        <div className={`text-xl font-black ${color.split(" ")[1]}`}>{value}</div>
+                        <div className="text-white/60 text-xs">{label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Recent activity */}
+                  <div className="space-y-2">
+                    {["🎂 Ramesh Kumar - Birthday today", "🔔 LIC Policy #4521 renews in 3 days", "📋 KYC pending - Priya Sharma"].map((item) => (
+                      <div key={item} className="bg-white/5 rounded-lg px-3 py-2 text-white/70 text-xs">{item}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Wave divider */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 80L1440 80L1440 20C1200 80 720 0 0 60V80Z" fill="white" />
+        </svg>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
