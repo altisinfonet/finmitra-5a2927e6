@@ -36,7 +36,7 @@ const Navbar = () => {
 
       {/* Mobile/tablet menu */}
       {open && (
-        <div className="lg:hidden fixed top-16 right-0 h-screen w-full sm:w-1/2 bg-white border-l border-border shadow-2xl px-6 py-6 flex flex-col gap-5 z-50">
+        <div className="lg:hidden bg-white border-t border-border px-4 py-4 flex flex-col gap-4">
           {links.map((l) => (
             <a key={l} href={`#${l.toLowerCase().replace(/\s+/g, "-")}`} onClick={() => setOpen(false)} className="text-foreground/80 hover:text-gold text-sm font-semibold">
               {l}
