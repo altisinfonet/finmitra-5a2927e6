@@ -19,6 +19,7 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 
 const Index = () => {
   const location = useLocation();
+  const [barVisible, setBarVisible] = useState(true);
 
   useEffect(() => {
     const hash = location.hash;
