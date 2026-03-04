@@ -1,4 +1,6 @@
 import finmitraLogo from "@/assets/finmitra-logo.png";
+import appOnboardingLight from "@/assets/app-onboarding-light.png";
+import appOnboardingDark from "@/assets/app-onboarding-dark.png";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Users, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";

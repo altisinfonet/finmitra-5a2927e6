@@ -2,6 +2,8 @@ import {
   Users, ShieldCheck, Calendar, Bell, CreditCard, Gift, MessageSquare, TrendingUp, Building2, Landmark, Home, Handshake
 } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import appDashboardDark from "@/assets/app-dashboard-dark.png";
+import appDashboardLight from "@/assets/app-dashboard-light.png";
 
 const features = [
   {

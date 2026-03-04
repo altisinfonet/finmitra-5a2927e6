@@ -1,6 +1,8 @@
 import { Smartphone, QrCode } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import finmitraLogo from "@/assets/finmitra-logo.png";
+import appSigninLight from "@/assets/app-signin-light.png";
+import appSigninDark from "@/assets/app-signin-dark.png";
 
 const DownloadSection = () => {
   return (
