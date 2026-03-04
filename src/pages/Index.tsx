@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import BackToTop from "@/components/BackToTop";
 import FadeIn from "@/components/FadeIn";
+import AnnouncementBar from "@/components/AnnouncementBar";
 
 const Index = () => {
   const location = useLocation();
