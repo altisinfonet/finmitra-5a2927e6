@@ -1,5 +1,6 @@
 import finmitraLogo from "@/assets/finmitra-logo.png";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
