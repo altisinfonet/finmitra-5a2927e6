@@ -1,6 +1,7 @@
 import benefitsIllustration from "@/assets/benefits-illustration.png";
 import { CheckCircle2 } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import { StaggerContainer, StaggerItem } from "@/components/StaggerContainer";
 
 const benefits = [
   "Never miss a renewal — automated alerts weeks in advance",
@@ -50,17 +51,19 @@ const BenefitsSection = () => {
             <p className="text-muted-foreground text-lg mb-8">
               Unlike generic CRMs, FinMitra understands the unique needs of Indian financial agents — from LIC renewals to SIP reminders to POSP compliance.
             </p>
-            <ul className="space-y-4">
+            <StaggerContainer className="space-y-4" stagger={0.07}>
               {benefits.map((b) => (
-                <li key={b} className="flex items-start gap-3">
-                  <CheckCircle2 size={20} className="text-gold mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground text-sm leading-relaxed">{b}</span>
-                </li>
+                <StaggerItem key={b}>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 size={20} className="text-gold mt-0.5 flex-shrink-0" />
+                    <span className="text-foreground text-sm leading-relaxed">{b}</span>
+                  </div>
+                </StaggerItem>
               ))}
-            </ul>
+            </StaggerContainer>
           </FadeIn>
 
-          {/* Right — logo + brand block */}
+          {/* Right */}
           <FadeIn direction="right" delay={0.15}>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 scale-110 rounded-3xl opacity-20" style={{ background: "var(--gradient-gold)", filter: "blur(40px)" }} />
@@ -75,9 +78,9 @@ const BenefitsSection = () => {
           <p className="text-muted-foreground">Real stories from real distributors</p>
         </FadeIn>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map(({ name, role, quote, avatar }, i) => (
-            <FadeIn key={name} delay={i * 0.15}>
+        <StaggerContainer className="grid md:grid-cols-3 gap-6" stagger={0.12}>
+          {testimonials.map(({ name, role, quote, avatar }) => (
+            <StaggerItem key={name}>
               <div className="rounded-2xl border border-border p-6 hover:shadow-lg transition-shadow h-full" style={{ background: "var(--gradient-card)" }}>
                 <p className="text-foreground text-sm leading-relaxed mb-5 italic">"{quote}"</p>
                 <div className="flex items-center gap-3">
@@ -90,9 +93,9 @@ const BenefitsSection = () => {
                   </div>
                 </div>
               </div>
-            </FadeIn>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
