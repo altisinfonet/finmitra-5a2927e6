@@ -195,11 +195,11 @@ const LanguageSwitcher = () => {
           className="flex items-center gap-1.5 text-xs font-semibold text-foreground/70 hover:text-gold transition-colors px-2 py-1 rounded-md border border-border hover:border-gold/40 bg-transparent"
         >
           {isNonEnglish && currentFlag ? (
-            <span className="text-base leading-none">{currentFlag}</span>
+            <span className="notranslate text-base leading-none" translate="no">{currentFlag}</span>
           ) : (
             <Globe size={13} />
           )}
-          <span className="hidden sm:inline max-w-[72px] truncate">{currentLabel}</span>
+          <span className="notranslate hidden sm:inline max-w-[72px] truncate" translate="no">{currentLabel}</span>
         </button>
 
         {open && (
