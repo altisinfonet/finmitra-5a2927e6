@@ -59,6 +59,7 @@ const LanguageSwitcher = () => {
   const select = (lang: typeof languages[0]) => {
     setSelected(lang);
     setOpen(false);
+    localStorage.setItem("fin_lang", lang.code);
     triggerGoogleTranslate(lang.code);
   };
 
