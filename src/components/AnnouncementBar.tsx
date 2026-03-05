@@ -22,6 +22,8 @@ const AnnouncementBar = forwardRef<HTMLDivElement, AnnouncementBarProps>(({ onDi
       <X size={14} />
     </button>
   </div>
-);
+));
+
+AnnouncementBar.displayName = "AnnouncementBar";
 
 export default AnnouncementBar;
