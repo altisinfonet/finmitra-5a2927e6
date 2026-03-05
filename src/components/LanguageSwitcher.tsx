@@ -121,12 +121,19 @@ const LanguageSwitcher = () => {
   const switchLanguage = (code: string) => {
     setCurrentLang(code);
     setOpen(false);
-    if (code === "en") {
+
+    // First try live switching via the hidden select element
+    const switched = triggerGoogleTranslate(code === "en" ? "en" : code);
+
+    if (!switched) {
+      // Fallback: set cookie and reload
+      setGoogCookie(code === "en" ? "/en/en" : `/en/${code}`);
+      window.location.reload();
+    } else if (code === "en") {
+      // Restore original: reload without cookie
       setGoogCookie("/en/en");
-    } else {
-      setGoogCookie(`/en/${code}`);
+      window.location.reload();
     }
-    window.location.reload();
   };
 
   const currentLabel = LANGUAGES.find((l) => l.code === currentLang)?.label ?? "EN";
