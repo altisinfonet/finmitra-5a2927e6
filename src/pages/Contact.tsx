@@ -93,8 +93,8 @@ const Contact = () => {
         </div>
 
       </main>
-      <Footer />
-      <WhatsAppFloat />
+      {!appMode && <Footer />}
+      {!appMode && <WhatsAppFloat />}
     </div>
   );
 };

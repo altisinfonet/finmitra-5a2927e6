@@ -94,8 +94,8 @@ const TermsOfService = () => {
           </div>
         </Section>
       </main>
-      <Footer />
-      <WhatsAppFloat />
+      {!appMode && <Footer />}
+      {!appMode && <WhatsAppFloat />}
     </div>
   );
 };

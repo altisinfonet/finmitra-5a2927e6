@@ -84,8 +84,8 @@ const AboutUs = () => {
         </div>
 
       </main>
-      <Footer />
-      <WhatsAppFloat />
+      {!appMode && <Footer />}
+      {!appMode && <WhatsAppFloat />}
     </div>
   );
 };
