@@ -54,7 +54,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       {!appMode && <Navbar />}
-      <main className="container mx-auto px-4 pt-28 pb-20 max-w-4xl">
+      <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-4xl`}>
 
         <div className="text-center mb-14">
           <p className="text-xs font-semibold uppercase tracking-widest text-[hsl(var(--gold))] mb-3">Contact Us</p>

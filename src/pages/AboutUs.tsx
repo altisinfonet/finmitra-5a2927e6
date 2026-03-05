@@ -16,7 +16,7 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background">
       {!appMode && <Navbar />}
-      <main className="container mx-auto px-4 pt-28 pb-20 max-w-4xl">
+      <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-4xl`}>
 
         {/* Hero */}
         <div className="mb-14 text-center">

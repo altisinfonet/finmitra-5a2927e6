@@ -15,7 +15,7 @@ const TermsOfService = () => {
   return (
     <div className="min-h-screen bg-background">
       {!appMode && <Navbar />}
-      <main className="container mx-auto px-4 pt-28 pb-20 max-w-3xl">
+      <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-3xl`}>
         <h1 className="text-3xl font-bold text-foreground mb-2">Terms of Service</h1>
         <p className="text-sm text-foreground/50 mb-10">Last updated: March 2026 &nbsp;|&nbsp; Altis Infonet Private Limited</p>
 
