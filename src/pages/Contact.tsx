@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import useAppMode from "@/hooks/useAppMode";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -49,10 +50,11 @@ const contacts = [
 ];
 
 const Contact = () => {
+  const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      <main className="container mx-auto px-4 pt-28 pb-20 max-w-4xl">
+      {!appMode && <Navbar />}
+      <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-4xl`}>
 
         <div className="text-center mb-14">
           <p className="text-xs font-semibold uppercase tracking-widest text-[hsl(var(--gold))] mb-3">Contact Us</p>
@@ -91,8 +93,8 @@ const Contact = () => {
         </div>
 
       </main>
-      <Footer />
-      <WhatsAppFloat />
+      {!appMode && <Footer />}
+      {!appMode && <WhatsAppFloat />}
     </div>
   );
 };

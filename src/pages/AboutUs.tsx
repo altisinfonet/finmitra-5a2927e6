@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Shield, Users, TrendingUp, Award } from "lucide-react";
+import useAppMode from "@/hooks/useAppMode";
 
 const stats = [
   { icon: Users, value: "10,000+", label: "Active Agents" },
@@ -11,10 +12,11 @@ const stats = [
 ];
 
 const AboutUs = () => {
+  const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      <main className="container mx-auto px-4 pt-28 pb-20 max-w-4xl">
+      {!appMode && <Navbar />}
+      <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-4xl`}>
 
         {/* Hero */}
         <div className="mb-14 text-center">
@@ -82,8 +84,8 @@ const AboutUs = () => {
         </div>
 
       </main>
-      <Footer />
-      <WhatsAppFloat />
+      {!appMode && <Footer />}
+      {!appMode && <WhatsAppFloat />}
     </div>
   );
 };

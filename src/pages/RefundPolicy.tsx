@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import useAppMode from "@/hooks/useAppMode";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-8">
@@ -10,10 +11,11 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 const RefundPolicy = () => {
+  const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      <main className="container mx-auto px-4 pt-28 pb-20 max-w-3xl">
+      {!appMode && <Navbar />}
+      <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-3xl`}>
         <h1 className="text-3xl font-bold text-foreground mb-2">Refund Policy</h1>
         <p className="text-sm text-foreground/50 mb-10">Last updated: March 2026 &nbsp;|&nbsp; Altis Infonet Private Limited</p>
 
@@ -91,8 +93,8 @@ const RefundPolicy = () => {
           </div>
         </Section>
       </main>
-      <Footer />
-      <WhatsAppFloat />
+      {!appMode && <Footer />}
+      {!appMode && <WhatsAppFloat />}
     </div>
   );
 };
