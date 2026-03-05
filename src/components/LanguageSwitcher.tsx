@@ -31,31 +31,46 @@ declare global {
   }
 }
 
-const getCookie = (name: string) => {
-  const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
-  return match ? match[2] : null;
+/** Read current lang from the googtrans cookie */
+const getCurrentLang = (): string => {
+  const match = document.cookie.match(/(?:^|;)\s*googtrans=\/[a-z-]+\/([a-z-]+)/);
+  return match ? match[1] : "en";
 };
 
-const getCurrentLang = (): string => {
-  const cookie = getCookie("googtrans");
-  if (cookie) {
-    const parts = cookie.split("/");
-    return parts[parts.length - 1] || "en";
+/** Set googtrans cookie on both root path and domain */
+const setGoogCookie = (val: string) => {
+  const host = location.hostname;
+  document.cookie = `googtrans=${val};path=/`;
+  // For sub-domains, also set on the domain itself
+  const parts = host.split(".");
+  if (parts.length > 1) {
+    document.cookie = `googtrans=${val};path=/;domain=.${parts.slice(-2).join(".")}`;
   }
-  return "en";
 };
 
 const LanguageSwitcher = () => {
   const [open, setOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState(getCurrentLang);
+  const [currentLang, setCurrentLang] = useState<string>(getCurrentLang);
   const ref = useRef<HTMLDivElement>(null);
 
-  // Inject Google Translate script once
+  // Inject Google Translate script once + suppress toolbar
   useEffect(() => {
+    // Suppress toolbar via CSS injection
+    const style = document.createElement("style");
+    style.id = "gt-suppress";
+    style.textContent = `
+      .goog-te-banner-frame, .goog-te-balloon-frame, #goog-gt-tt,
+      .skiptranslate > iframe { display:none!important; visibility:hidden!important; }
+      body { top:0!important; }
+      .goog-te-gadget { display:none!important; }
+    `;
+    if (!document.getElementById("gt-suppress")) document.head.appendChild(style);
+
     if (document.getElementById("gt-script")) return;
 
     window.googleTranslateElementInit = () => {
-      new window.google!.translate.TranslateElement(
+      if (!window.google?.translate?.TranslateElement) return;
+      new window.google.translate.TranslateElement(
         {
           pageLanguage: "en",
           includedLanguages: LANGUAGES.map((l) => l.code).join(","),
@@ -67,24 +82,22 @@ const LanguageSwitcher = () => {
 
     const script = document.createElement("script");
     script.id = "gt-script";
-    script.src =
-      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
     document.body.appendChild(script);
 
-    // Suppress Google Translate toolbar via MutationObserver
-    const observer = new MutationObserver(() => {
-      // Remove injected iframes
-      document.querySelectorAll(".skiptranslate iframe, #goog-gt-tt").forEach((el) => el.remove());
-      // Fix body top offset Google injects
-      if (document.body.style.top) document.body.style.top = "";
+    // Kill injected toolbar elements
+    const mo = new MutationObserver(() => {
+      document
+        .querySelectorAll(".skiptranslate iframe, #goog-gt-tt, .goog-te-banner-frame")
+        .forEach((el) => (el as HTMLElement).style.setProperty("display", "none", "important"));
+      if (document.body.style.top) document.body.style.removeProperty("top");
     });
-    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["style"] });
-
-    return () => observer.disconnect();
+    mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["style"] });
+    return () => mo.disconnect();
   }, []);
 
-  // Close dropdown on outside click
+  // Close on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
@@ -96,12 +109,6 @@ const LanguageSwitcher = () => {
   const switchLanguage = (code: string) => {
     setCurrentLang(code);
     setOpen(false);
-
-    const setGoogCookie = (val: string) => {
-      document.cookie = `googtrans=${val};path=/`;
-      document.cookie = `googtrans=${val};domain=${location.hostname};path=/`;
-    };
-
     if (code === "en") {
       setGoogCookie("/en/en");
     } else {
@@ -114,29 +121,32 @@ const LanguageSwitcher = () => {
 
   return (
     <>
-      {/* Hidden Google Translate element (required by the API) */}
-      <div id="google_translate_element" className="hidden" />
+      {/* Hidden Google Translate mount point */}
+      <div id="google_translate_element" className="hidden" aria-hidden="true" />
 
       <div ref={ref} className="relative">
         <button
           onClick={() => setOpen((o) => !o)}
           aria-label="Change language"
-          className="flex items-center gap-1 text-xs font-semibold text-foreground/70 hover:text-gold transition-colors px-2 py-1 rounded-md border border-border hover:border-gold/40 bg-transparent"
+          className="flex items-center gap-1.5 text-xs font-semibold text-foreground/70 hover:text-gold transition-colors px-2 py-1 rounded-md border border-border hover:border-gold/40 bg-transparent"
         >
           <Globe size={13} />
-          <span className="hidden sm:inline">{currentLabel}</span>
-          <span className="sm:hidden">🌐</span>
+          <span className="hidden sm:inline max-w-[72px] truncate">{currentLabel}</span>
         </button>
 
         {open && (
-          <div className="absolute right-0 top-full mt-2 w-44 rounded-xl border border-border bg-white shadow-lg z-[200] py-1 overflow-hidden">
-            <p className="px-3 py-1.5 text-[10px] font-bold text-foreground/40 uppercase tracking-widest">Language</p>
+          <div className="absolute right-0 top-full mt-2 w-44 rounded-xl border border-border bg-white shadow-lg z-[200] py-1 overflow-y-auto max-h-72">
+            <p className="px-3 py-1.5 text-[10px] font-bold text-foreground/40 uppercase tracking-widest">
+              Language
+            </p>
             {LANGUAGES.map((lang) => (
               <button
                 key={lang.code}
                 onClick={() => switchLanguage(lang.code)}
-                className={`w-full text-left px-3 py-2 text-sm hover:bg-gold-pale transition-colors ${
-                  currentLang === lang.code ? "text-gold font-bold" : "text-foreground/80"
+                className={`w-full text-left px-3 py-2 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors ${
+                  currentLang === lang.code
+                    ? "text-[hsl(var(--gold))] font-bold"
+                    : "text-foreground/80"
                 }`}
               >
                 {lang.label}
