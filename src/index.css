@@ -15,16 +15,19 @@
     overflow-x: hidden;
     max-width: 100vw;
   }
-  /* Hide default Google Translate toolbar */
-  .goog-te-banner-frame,
-  .goog-te-banner-frame.skiptranslate,
-  iframe.goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; }
-  .skiptranslate { display: none !important; visibility: hidden !important; }
-  body { top: 0 !important; position: static !important; margin-top: 0 !important; }
-  #goog-gt-tt, .goog-te-balloon-frame, .goog-te-ftab-float { display: none !important; }
-  .goog-tooltip, .goog-tooltip:hover { display: none !important; }
+  /* Hide Google Translate top banner */
+  .goog-te-banner-frame.skiptranslate { display: none !important; }
+  /* Remove extra space at top */
+  body { top: 0px !important; }
+  /* Hide Google Translate tooltip */
+  .goog-tooltip { display: none !important; }
+  .goog-tooltip:hover { display: none !important; }
+  /* Hide highlight */
   .goog-text-highlight { background: none !important; box-shadow: none !important; }
-  font[face="Arial"] { display: none !important; }
+  /* Additional cleanup */
+  .goog-te-banner-frame, iframe.goog-te-banner-frame { display: none !important; height: 0 !important; }
+  .skiptranslate { display: none !important; }
+  #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
   #google_translate_element { display: none !important; }
 }
 
