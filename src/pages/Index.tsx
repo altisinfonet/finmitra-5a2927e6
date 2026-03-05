@@ -22,15 +22,19 @@ const Index = () => {
   const location = useLocation();
   const [barVisible, setBarVisible] = useState(true);
   const [barHeight, setBarHeight] = useState(30);
-  const barWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!barVisible) { setBarHeight(0); return; }
-    const measure = () => { if (barWrapRef.current) setBarHeight(barWrapRef.current.offsetHeight); };
-    measure();
+    const measure = () => {
+      const el = document.getElementById("announcement-bar");
+      if (el) setBarHeight(el.offsetHeight);
+    };
+    // slight delay so the element is mounted
+    const t = setTimeout(measure, 50);
     const ro = new ResizeObserver(measure);
-    if (barWrapRef.current) ro.observe(barWrapRef.current);
-    return () => ro.disconnect();
+    const el = document.getElementById("announcement-bar");
+    if (el) ro.observe(el);
+    return () => { clearTimeout(t); ro.disconnect(); };
   }, [barVisible]);
 
   useEffect(() => {
