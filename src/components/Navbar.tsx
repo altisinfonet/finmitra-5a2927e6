@@ -116,8 +116,10 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
           <Button variant="cta" size="sm" onClick={() => { const el = document.getElementById('download'); el ? el.scrollIntoView({ behavior: 'smooth', block: 'start' }) : (window.location.href = '/#download'); }}>Download App</Button>
         </div>
 
-        {/* Mobile/tablet menu button */}
-        <button className="lg:hidden text-foreground" onClick={() => setOpen(!open)}>
+        {/* Mobile language + menu */}
+        <div className="lg:hidden flex items-center gap-2">
+          <LanguageSwitcher />
+          <button className="text-foreground" onClick={() => setOpen(!open)}>
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
