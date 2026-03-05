@@ -67,6 +67,7 @@ const Index = () => {
       <FadeIn threshold={0.1}><CtaSection /></FadeIn>
       <Footer />
       <WhatsAppFloat />
+      <StickyDownloadBar />
     </div>
   );
 };
