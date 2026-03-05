@@ -20,6 +20,7 @@ const LANGUAGES = [
 declare global {
   interface Window {
     googleTranslateElementInit?: () => void;
+    doGTranslate?: (lang: string) => void;
     google?: {
       translate: {
         TranslateElement: new (
@@ -37,11 +38,22 @@ const getCurrentLang = (): string => {
   return match ? match[1] : "en";
 };
 
+/** Trigger Google Translate via the select element it injects */
+const triggerGoogleTranslate = (code: string) => {
+  // Try the select element approach (most reliable)
+  const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
+  if (select) {
+    select.value = code;
+    select.dispatchEvent(new Event("change"));
+    return true;
+  }
+  return false;
+};
+
 /** Set googtrans cookie on both root path and domain */
 const setGoogCookie = (val: string) => {
   const host = location.hostname;
   document.cookie = `googtrans=${val};path=/`;
-  // For sub-domains, also set on the domain itself
   const parts = host.split(".");
   if (parts.length > 1) {
     document.cookie = `googtrans=${val};path=/;domain=.${parts.slice(-2).join(".")}`;
