@@ -21,6 +21,17 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 const Index = () => {
   const location = useLocation();
   const [barVisible, setBarVisible] = useState(true);
+  const [barHeight, setBarHeight] = useState(30);
+  const barRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!barVisible) { setBarHeight(0); return; }
+    const measure = () => { if (barRef.current) setBarHeight(barRef.current.offsetHeight); };
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (barRef.current) ro.observe(barRef.current);
+    return () => ro.disconnect();
+  }, [barVisible]);
 
   useEffect(() => {
     const hash = location.hash;
