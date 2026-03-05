@@ -149,15 +149,20 @@ const LanguageSwitcher = () => {
     localStorage.setItem("finmitra_lang", code);
 
     if (code === "en") {
-      // Restore original language: clear cookie + localStorage and reload
       localStorage.removeItem("finmitra_lang");
       const host = location.hostname;
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+      const expired = "expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      document.cookie = `googtrans=; ${expired}; path=/`;
+      document.cookie = `googtrans=/en/en; ${expired}; path=/`;
       const parts = host.split(".");
       if (parts.length > 1) {
-        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.${parts.slice(-2).join(".")}`;
+        const domain = `.${parts.slice(-2).join(".")}`;
+        document.cookie = `googtrans=; ${expired}; path=/; domain=${domain}`;
+        document.cookie = `googtrans=/en/en; ${expired}; path=/; domain=${domain}`;
       }
-      window.location.reload();
+      // Try live switch first, reload as fallback
+      const switched = triggerGoogleTranslate("en");
+      if (!switched) window.location.reload();
       return;
     }
 
