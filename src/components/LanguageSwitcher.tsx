@@ -122,16 +122,23 @@ const LanguageSwitcher = () => {
     setCurrentLang(code);
     setOpen(false);
 
-    // First try live switching via the hidden select element
-    const switched = triggerGoogleTranslate(code === "en" ? "en" : code);
+    if (code === "en") {
+      // Restore original language: clear cookie and reload
+      const host = location.hostname;
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+      const parts = host.split(".");
+      if (parts.length > 1) {
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.${parts.slice(-2).join(".")}`;
+      }
+      window.location.reload();
+      return;
+    }
 
+    // Try live switching via the hidden select element
+    const switched = triggerGoogleTranslate(code);
     if (!switched) {
       // Fallback: set cookie and reload
-      setGoogCookie(code === "en" ? "/en/en" : `/en/${code}`);
-      window.location.reload();
-    } else if (code === "en") {
-      // Restore original: reload without cookie
-      setGoogCookie("/en/en");
+      setGoogCookie(`/en/${code}`);
       window.location.reload();
     }
   };
