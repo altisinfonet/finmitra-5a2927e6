@@ -12,9 +12,10 @@ const stats = [
 ];
 
 const AboutUs = () => {
+  const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      {!appMode && <Navbar />}
       <main className="container mx-auto px-4 pt-28 pb-20 max-w-4xl">
 
         {/* Hero */}
