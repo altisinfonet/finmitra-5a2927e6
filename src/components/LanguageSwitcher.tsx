@@ -188,11 +188,12 @@ const LanguageSwitcher = () => {
       {/* Hidden Google Translate mount point */}
       <div id="google_translate_element" className="hidden" aria-hidden="true" />
 
-      <div ref={ref} className="relative">
+      <div ref={ref} className="relative" translate="no">
         <button
           onClick={() => setOpen((o) => !o)}
           aria-label="Change language"
-          className="flex items-center gap-1.5 text-xs font-semibold text-foreground/70 hover:text-gold transition-colors px-2 py-1 rounded-md border border-border hover:border-gold/40 bg-transparent"
+          translate="no"
+          className="notranslate flex items-center gap-1.5 text-xs font-semibold text-foreground/70 hover:text-gold transition-colors px-2 py-1 rounded-md border border-border hover:border-gold/40 bg-transparent"
         >
           {isNonEnglish && currentFlag ? (
             <span className="notranslate text-base leading-none" translate="no">{currentFlag}</span>
