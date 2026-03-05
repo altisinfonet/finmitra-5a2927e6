@@ -2,19 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import { Globe } from "lucide-react";
 
 const LANGUAGES = [
-  { code: "en", label: "English" },
-  { code: "hi", label: "हिन्दी" },
-  { code: "mr", label: "मराठी" },
-  { code: "gu", label: "ગુજરાતી" },
-  { code: "ta", label: "தமிழ்" },
-  { code: "te", label: "తెలుగు" },
-  { code: "kn", label: "ಕನ್ನಡ" },
-  { code: "ml", label: "മലയാളം" },
-  { code: "bn", label: "বাংলা" },
-  { code: "pa", label: "ਪੰਜਾਬੀ" },
-  { code: "ur", label: "اردو" },
-  { code: "or", label: "ଓଡ଼ିଆ" },
-  { code: "as", label: "অসমীয়া" },
+  { code: "en", label: "English",    flag: "🇬🇧" },
+  { code: "hi", label: "हिन्दी",      flag: "🇮🇳" },
+  { code: "mr", label: "मराठी",       flag: "🇮🇳" },
+  { code: "gu", label: "ગુજરાતી",    flag: "🇮🇳" },
+  { code: "ta", label: "தமிழ்",      flag: "🇮🇳" },
+  { code: "te", label: "తెలుగు",     flag: "🇮🇳" },
+  { code: "kn", label: "ಕನ್ನಡ",      flag: "🇮🇳" },
+  { code: "ml", label: "മലയാളം",    flag: "🇮🇳" },
+  { code: "bn", label: "বাংলা",      flag: "🇮🇳" },
+  { code: "pa", label: "ਪੰਜਾਬੀ",    flag: "🇮🇳" },
+  { code: "ur", label: "اردو",       flag: "🇵🇰" },
+  { code: "or", label: "ଓଡ଼ିଆ",      flag: "🇮🇳" },
+  { code: "as", label: "অসমীয়া",   flag: "🇮🇳" },
 ];
 
 declare global {
@@ -174,12 +174,13 @@ const LanguageSwitcher = () => {
               <button
                 key={lang.code}
                 onClick={() => switchLanguage(lang.code)}
-                className={`w-full text-left px-3 py-2 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors ${
+                className={`w-full text-left px-3 py-2 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors flex items-center gap-2 ${
                   currentLang === lang.code
                     ? "text-[hsl(var(--gold))] font-bold"
                     : "text-foreground/80"
                 }`}
               >
+                <span className="text-base leading-none">{lang.flag}</span>
                 {lang.label}
               </button>
             ))}
