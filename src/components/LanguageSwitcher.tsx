@@ -174,12 +174,13 @@ const LanguageSwitcher = () => {
               <button
                 key={lang.code}
                 onClick={() => switchLanguage(lang.code)}
-                className={`w-full text-left px-3 py-2 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors ${
+                className={`w-full text-left px-3 py-2 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors flex items-center gap-2 ${
                   currentLang === lang.code
                     ? "text-[hsl(var(--gold))] font-bold"
                     : "text-foreground/80"
                 }`}
               >
+                <span className="text-base leading-none">{lang.flag}</span>
                 {lang.label}
               </button>
             ))}
