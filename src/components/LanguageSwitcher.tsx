@@ -117,6 +117,17 @@ const LanguageSwitcher = () => {
         },
         "google_translate_element"
       );
+
+      // Re-apply persisted language after GT is ready
+      const saved = localStorage.getItem("finmitra_lang");
+      if (saved && saved !== "en") {
+        // Poll until the select element appears (GT injects it async)
+        let attempts = 0;
+        const poll = setInterval(() => {
+          const switched = triggerGoogleTranslate(saved);
+          if (switched || ++attempts > 20) clearInterval(poll);
+        }, 200);
+      }
     };
 
     const script = document.createElement("script");
