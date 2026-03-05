@@ -124,8 +124,11 @@ const LanguageSwitcher = () => {
     setCurrentLang(code);
     setOpen(false);
 
+    localStorage.setItem("finmitra_lang", code);
+
     if (code === "en") {
-      // Restore original language: clear cookie and reload
+      // Restore original language: clear cookie + localStorage and reload
+      localStorage.removeItem("finmitra_lang");
       const host = location.hostname;
       document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
       const parts = host.split(".");
