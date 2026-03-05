@@ -5,7 +5,7 @@ interface AnnouncementBarProps {
 }
 
 const AnnouncementBar = ({ onDismiss }: AnnouncementBarProps) => (
-  <div className="fixed top-0 left-0 right-0 z-[60] bg-navy text-white text-xs font-semibold flex items-center justify-center gap-2 px-8 py-2 text-center">
+  <div id="announcement-bar" className="fixed top-0 left-0 right-0 z-[60] bg-navy text-white text-xs font-semibold flex items-center justify-center gap-2 px-8 py-2 text-center">
     <Sparkles size={13} className="text-[hsl(var(--gold-light))] shrink-0" />
     <span>
       🎉 Start your <span className="text-[hsl(var(--gold-light))]">14-day free trial</span> — no credit card required.{" "}
