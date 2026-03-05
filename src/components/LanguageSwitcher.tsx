@@ -32,8 +32,10 @@ declare global {
   }
 }
 
-/** Read current lang from the googtrans cookie */
+/** Read current lang — localStorage first, then cookie fallback */
 const getCurrentLang = (): string => {
+  const stored = localStorage.getItem("finmitra_lang");
+  if (stored) return stored;
   const match = document.cookie.match(/(?:^|;)\s*googtrans=\/[a-z-]+\/([a-z-]+)/);
   return match ? match[1] : "en";
 };
