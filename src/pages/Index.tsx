@@ -48,8 +48,8 @@ const Index = () => {
   return (
     <div className="min-h-screen overflow-x-hidden">
       <ScrollProgressBar />
-      {barVisible && <AnnouncementBar onDismiss={() => setBarVisible(false)} />}
-      <Navbar barOffset={barVisible ? 30 : 0} />
+      {barVisible && <AnnouncementBar ref={barRef} onDismiss={() => setBarVisible(false)} />}
+      <Navbar barOffset={barHeight} />
       <HeroSection />
       <FadeIn threshold={0.1}><FeaturesSection /></FadeIn>
       <FadeIn threshold={0.1} delay={0.05}><HowItWorksSection /></FadeIn>
