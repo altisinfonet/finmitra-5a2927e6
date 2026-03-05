@@ -117,9 +117,12 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
         </div>
 
         {/* Mobile/tablet menu button */}
-        <button className="lg:hidden text-foreground" onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="lg:hidden flex items-center gap-2">
+          <LanguageSwitcher />
+          <button className="text-foreground" onClick={() => setOpen(!open)}>
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile/tablet menu */}
