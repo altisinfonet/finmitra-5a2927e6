@@ -22,14 +22,14 @@ const Index = () => {
   const location = useLocation();
   const [barVisible, setBarVisible] = useState(true);
   const [barHeight, setBarHeight] = useState(30);
-  const barRef = useRef<HTMLDivElement>(null);
+  const barWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!barVisible) { setBarHeight(0); return; }
-    const measure = () => { if (barRef.current) setBarHeight(barRef.current.offsetHeight); };
+    const measure = () => { if (barWrapRef.current) setBarHeight(barWrapRef.current.offsetHeight); };
     measure();
     const ro = new ResizeObserver(measure);
-    if (barRef.current) ro.observe(barRef.current);
+    if (barWrapRef.current) ro.observe(barWrapRef.current);
     return () => ro.disconnect();
   }, [barVisible]);
 
@@ -48,7 +48,7 @@ const Index = () => {
   return (
     <div className="min-h-screen overflow-x-hidden">
       <ScrollProgressBar />
-      {barVisible && <AnnouncementBar ref={barRef} onDismiss={() => setBarVisible(false)} />}
+      {barVisible && <div ref={barWrapRef}><AnnouncementBar onDismiss={() => setBarVisible(false)} /></div>}
       <Navbar barOffset={barHeight} />
       <HeroSection />
       <FadeIn threshold={0.1}><FeaturesSection /></FadeIn>
