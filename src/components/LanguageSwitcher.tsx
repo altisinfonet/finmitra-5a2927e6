@@ -32,8 +32,10 @@ declare global {
   }
 }
 
-/** Read current lang from the googtrans cookie */
+/** Read current lang — localStorage first, then cookie fallback */
 const getCurrentLang = (): string => {
+  const stored = localStorage.getItem("finmitra_lang");
+  if (stored) return stored;
   const match = document.cookie.match(/(?:^|;)\s*googtrans=\/[a-z-]+\/([a-z-]+)/);
   return match ? match[1] : "en";
 };
@@ -122,8 +124,11 @@ const LanguageSwitcher = () => {
     setCurrentLang(code);
     setOpen(false);
 
+    localStorage.setItem("finmitra_lang", code);
+
     if (code === "en") {
-      // Restore original language: clear cookie and reload
+      // Restore original language: clear cookie + localStorage and reload
+      localStorage.removeItem("finmitra_lang");
       const host = location.hostname;
       document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
       const parts = host.split(".");
