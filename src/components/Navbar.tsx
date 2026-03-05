@@ -120,9 +120,9 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
         <div className="lg:hidden flex items-center gap-2">
           <LanguageSwitcher />
           <button className="text-foreground" onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
 
       {/* Mobile/tablet menu */}
       <AnimatePresence>
