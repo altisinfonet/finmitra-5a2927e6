@@ -42,8 +42,10 @@ const triggerGoogleTranslate = (langCode: string) => {
 };
 
 const LanguageSwitcher = () => {
+  const savedCode = typeof window !== "undefined" ? localStorage.getItem("fin_lang") || "en" : "en";
+  const savedLang = languages.find(l => l.code === savedCode) || languages[0];
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(languages[0]);
+  const [selected, setSelected] = useState(savedLang);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
