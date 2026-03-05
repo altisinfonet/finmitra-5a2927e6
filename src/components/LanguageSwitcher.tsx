@@ -175,7 +175,10 @@ const LanguageSwitcher = () => {
     }
   };
 
-  const currentLabel = LANGUAGES.find((l) => l.code === currentLang)?.label ?? "EN";
+  const currentLangObj = LANGUAGES.find((l) => l.code === currentLang);
+  const currentLabel = currentLangObj?.label ?? "EN";
+  const currentFlag = currentLangObj?.flag;
+  const isNonEnglish = currentLang !== "en";
 
   return (
     <>
@@ -188,7 +191,11 @@ const LanguageSwitcher = () => {
           aria-label="Change language"
           className="flex items-center gap-1.5 text-xs font-semibold text-foreground/70 hover:text-gold transition-colors px-2 py-1 rounded-md border border-border hover:border-gold/40 bg-transparent"
         >
-          <Globe size={13} />
+          {isNonEnglish && currentFlag ? (
+            <span className="text-base leading-none">{currentFlag}</span>
+          ) : (
+            <Globe size={13} />
+          )}
           <span className="hidden sm:inline max-w-[72px] truncate">{currentLabel}</span>
         </button>
 
