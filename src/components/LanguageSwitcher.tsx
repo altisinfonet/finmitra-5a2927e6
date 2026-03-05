@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Globe } from "lucide-react";
 
-const LANGUAGES = [
-  // Indian languages
+const INDIAN_LANGUAGES = [
   { code: "en", label: "English",    flag: "🇬🇧" },
   { code: "hi", label: "हिन्दी",      flag: "🇮🇳" },
   { code: "mr", label: "मराठी",      flag: "🇮🇳" },
@@ -16,28 +15,32 @@ const LANGUAGES = [
   { code: "ur", label: "اردو",      flag: "🇵🇰" },
   { code: "or", label: "ଓଡ଼ିଆ",     flag: "🇮🇳" },
   { code: "as", label: "অসমীয়া",  flag: "🇮🇳" },
-  // World languages
-  { code: "zh-CN", label: "中文",   flag: "🇨🇳" },
-  { code: "es",    label: "Español", flag: "🇪🇸" },
-  { code: "ar",    label: "العربية", flag: "🇸🇦" },
-  { code: "fr",    label: "Français",flag: "🇫🇷" },
-  { code: "pt",    label: "Português",flag:"🇧🇷" },
-  { code: "ru",    label: "Русский", flag: "🇷🇺" },
-  { code: "de",    label: "Deutsch", flag: "🇩🇪" },
-  { code: "ja",    label: "日本語",  flag: "🇯🇵" },
-  { code: "ko",    label: "한국어",  flag: "🇰🇷" },
-  { code: "tr",    label: "Türkçe",  flag: "🇹🇷" },
-  { code: "it",    label: "Italiano",flag: "🇮🇹" },
-  { code: "id",    label: "Indonesia",flag:"🇮🇩" },
-  { code: "vi",    label: "Tiếng Việt",flag:"🇻🇳"},
-  { code: "th",    label: "ภาษาไทย", flag: "🇹🇭" },
-  { code: "ms",    label: "Melayu",  flag: "🇲🇾" },
-  { code: "fa",    label: "فارسی",   flag: "🇮🇷" },
-  { code: "nl",    label: "Nederlands",flag:"🇳🇱"},
-  { code: "pl",    label: "Polski",  flag: "🇵🇱" },
-  { code: "uk",    label: "Українська",flag:"🇺🇦"},
-  { code: "sw",    label: "Kiswahili",flag:"🇰🇪"},
 ];
+
+const WORLD_LANGUAGES = [
+  { code: "zh-CN", label: "中文",       flag: "🇨🇳" },
+  { code: "es",    label: "Español",    flag: "🇪🇸" },
+  { code: "ar",    label: "العربية",    flag: "🇸🇦" },
+  { code: "fr",    label: "Français",   flag: "🇫🇷" },
+  { code: "pt",    label: "Português",  flag: "🇧🇷" },
+  { code: "ru",    label: "Русский",    flag: "🇷🇺" },
+  { code: "de",    label: "Deutsch",    flag: "🇩🇪" },
+  { code: "ja",    label: "日本語",     flag: "🇯🇵" },
+  { code: "ko",    label: "한국어",     flag: "🇰🇷" },
+  { code: "tr",    label: "Türkçe",     flag: "🇹🇷" },
+  { code: "it",    label: "Italiano",   flag: "🇮🇹" },
+  { code: "id",    label: "Indonesia",  flag: "🇮🇩" },
+  { code: "vi",    label: "Tiếng Việt", flag: "🇻🇳" },
+  { code: "th",    label: "ภาษาไทย",   flag: "🇹🇭" },
+  { code: "ms",    label: "Melayu",     flag: "🇲🇾" },
+  { code: "fa",    label: "فارسی",      flag: "🇮🇷" },
+  { code: "nl",    label: "Nederlands", flag: "🇳🇱" },
+  { code: "pl",    label: "Polski",     flag: "🇵🇱" },
+  { code: "uk",    label: "Українська", flag: "🇺🇦" },
+  { code: "sw",    label: "Kiswahili",  flag: "🇰🇪" },
+];
+
+const LANGUAGES = [...INDIAN_LANGUAGES, ...WORLD_LANGUAGES];
 
 declare global {
   interface Window {
@@ -200,18 +203,37 @@ const LanguageSwitcher = () => {
         </button>
 
         {open && (
-          <div className="absolute right-0 top-full mt-2 w-44 rounded-xl border border-border bg-white shadow-lg z-[200] py-1 overflow-y-auto max-h-72">
-            <p className="px-3 py-1.5 text-[10px] font-bold text-foreground/40 uppercase tracking-widest">
-              Language
+          <div className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-border bg-background shadow-lg z-[200] py-1 overflow-y-auto max-h-80">
+            {/* Indian Languages */}
+            <p className="px-3 pt-2 pb-1 text-[10px] font-bold text-foreground/40 uppercase tracking-widest">
+              🇮🇳 Indian Languages
             </p>
-            {LANGUAGES.map((lang) => (
+            {INDIAN_LANGUAGES.map((lang) => (
               <button
                 key={lang.code}
                 onClick={() => switchLanguage(lang.code)}
-                className={`w-full text-left px-3 py-2 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors flex items-center gap-2 ${
-                  currentLang === lang.code
-                    ? "text-[hsl(var(--gold))] font-bold"
-                    : "text-foreground/80"
+                className={`w-full text-left px-3 py-1.5 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors flex items-center gap-2 ${
+                  currentLang === lang.code ? "text-[hsl(var(--gold))] font-bold" : "text-foreground/80"
+                }`}
+              >
+                <span className="text-base leading-none">{lang.flag}</span>
+                {lang.label}
+              </button>
+            ))}
+
+            {/* Divider */}
+            <div className="my-1.5 mx-3 border-t border-border" />
+
+            {/* World Languages */}
+            <p className="px-3 pb-1 text-[10px] font-bold text-foreground/40 uppercase tracking-widest">
+              🌍 World Languages
+            </p>
+            {WORLD_LANGUAGES.map((lang) => (
+              <button
+                key={lang.code}
+                onClick={() => switchLanguage(lang.code)}
+                className={`w-full text-left px-3 py-1.5 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors flex items-center gap-2 ${
+                  currentLang === lang.code ? "text-[hsl(var(--gold))] font-bold" : "text-foreground/80"
                 }`}
               >
                 <span className="text-base leading-none">{lang.flag}</span>
