@@ -28,21 +28,24 @@ const languages = [
 
 const triggerGoogleTranslate = (langCode: string) => {
   if (langCode === "en") {
-    // Reset to original
-    const combo = document.querySelector(".goog-te-combo") as HTMLSelectElement | null;
-    if (combo) { combo.value = "en"; combo.dispatchEvent(new Event("change")); }
+    // Reset: remove cookie and reload
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+    window.location.reload();
     return;
   }
-  const combo = document.querySelector(".goog-te-combo") as HTMLSelectElement | null;
-  if (combo) {
-    combo.value = langCode;
-    combo.dispatchEvent(new Event("change"));
-  }
+  // Set cookie and reload — most reliable method with Google Translate
+  const val = `/en/${langCode}`;
+  document.cookie = `googtrans=${val}; path=/`;
+  document.cookie = `googtrans=${val}; path=/; domain=${window.location.hostname}`;
+  window.location.reload();
 };
 
 const LanguageSwitcher = () => {
+  const savedCode = typeof window !== "undefined" ? localStorage.getItem("fin_lang") || "en" : "en";
+  const savedLang = languages.find(l => l.code === savedCode) || languages[0];
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(languages[0]);
+  const [selected, setSelected] = useState(savedLang);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -56,6 +59,7 @@ const LanguageSwitcher = () => {
   const select = (lang: typeof languages[0]) => {
     setSelected(lang);
     setOpen(false);
+    localStorage.setItem("fin_lang", lang.code);
     triggerGoogleTranslate(lang.code);
   };
 
