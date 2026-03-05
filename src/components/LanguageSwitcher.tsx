@@ -188,18 +188,19 @@ const LanguageSwitcher = () => {
       {/* Hidden Google Translate mount point */}
       <div id="google_translate_element" className="hidden" aria-hidden="true" />
 
-      <div ref={ref} className="relative">
+      <div ref={ref} className="relative" translate="no">
         <button
           onClick={() => setOpen((o) => !o)}
           aria-label="Change language"
-          className="flex items-center gap-1.5 text-xs font-semibold text-foreground/70 hover:text-gold transition-colors px-2 py-1 rounded-md border border-border hover:border-gold/40 bg-transparent"
+          translate="no"
+          className="notranslate flex items-center gap-1.5 text-xs font-semibold text-foreground/70 hover:text-gold transition-colors px-2 py-1 rounded-md border border-border hover:border-gold/40 bg-transparent"
         >
           {isNonEnglish && currentFlag ? (
-            <span className="text-base leading-none">{currentFlag}</span>
+            <span className="notranslate text-base leading-none" translate="no">{currentFlag}</span>
           ) : (
             <Globe size={13} />
           )}
-          <span className="hidden sm:inline max-w-[72px] truncate">{currentLabel}</span>
+          <span className="notranslate hidden sm:inline max-w-[72px] truncate" translate="no">{currentLabel}</span>
         </button>
 
         {open && (
@@ -212,12 +213,13 @@ const LanguageSwitcher = () => {
               <button
                 key={lang.code}
                 onClick={() => switchLanguage(lang.code)}
-                className={`w-full text-left px-3 py-1.5 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors flex items-center gap-2 ${
+                className={`notranslate w-full text-left px-3 py-1.5 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors flex items-center gap-2 ${
                   currentLang === lang.code ? "text-[hsl(var(--gold))] font-bold" : "text-foreground/80"
                 }`}
+                translate="no"
               >
-                <span className="text-base leading-none">{lang.flag}</span>
-                {lang.label}
+                <span className="notranslate text-base leading-none" translate="no">{lang.flag}</span>
+                <span className="notranslate" translate="no">{lang.label}</span>
               </button>
             ))}
 
@@ -232,12 +234,13 @@ const LanguageSwitcher = () => {
               <button
                 key={lang.code}
                 onClick={() => switchLanguage(lang.code)}
-                className={`w-full text-left px-3 py-1.5 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors flex items-center gap-2 ${
+                className={`notranslate w-full text-left px-3 py-1.5 text-sm hover:bg-[hsl(var(--gold-pale))] transition-colors flex items-center gap-2 ${
                   currentLang === lang.code ? "text-[hsl(var(--gold))] font-bold" : "text-foreground/80"
                 }`}
+                translate="no"
               >
-                <span className="text-base leading-none">{lang.flag}</span>
-                {lang.label}
+                <span className="notranslate text-base leading-none" translate="no">{lang.flag}</span>
+                <span className="notranslate" translate="no">{lang.label}</span>
               </button>
             ))}
           </div>
