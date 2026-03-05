@@ -17,6 +17,7 @@ import BackToTop from "@/components/BackToTop";
 import FadeIn from "@/components/FadeIn";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
+import StickyDownloadBar from "@/components/StickyDownloadBar";
 
 const Index = () => {
   const location = useLocation();
