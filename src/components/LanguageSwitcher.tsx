@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Globe } from "lucide-react";
 
-const LANGUAGES = [
-  // Indian languages
+const INDIAN_LANGUAGES = [
   { code: "en", label: "English",    flag: "🇬🇧" },
   { code: "hi", label: "हिन्दी",      flag: "🇮🇳" },
   { code: "mr", label: "मराठी",      flag: "🇮🇳" },
@@ -16,28 +15,32 @@ const LANGUAGES = [
   { code: "ur", label: "اردو",      flag: "🇵🇰" },
   { code: "or", label: "ଓଡ଼ିଆ",     flag: "🇮🇳" },
   { code: "as", label: "অসমীয়া",  flag: "🇮🇳" },
-  // World languages
-  { code: "zh-CN", label: "中文",   flag: "🇨🇳" },
-  { code: "es",    label: "Español", flag: "🇪🇸" },
-  { code: "ar",    label: "العربية", flag: "🇸🇦" },
-  { code: "fr",    label: "Français",flag: "🇫🇷" },
-  { code: "pt",    label: "Português",flag:"🇧🇷" },
-  { code: "ru",    label: "Русский", flag: "🇷🇺" },
-  { code: "de",    label: "Deutsch", flag: "🇩🇪" },
-  { code: "ja",    label: "日本語",  flag: "🇯🇵" },
-  { code: "ko",    label: "한국어",  flag: "🇰🇷" },
-  { code: "tr",    label: "Türkçe",  flag: "🇹🇷" },
-  { code: "it",    label: "Italiano",flag: "🇮🇹" },
-  { code: "id",    label: "Indonesia",flag:"🇮🇩" },
-  { code: "vi",    label: "Tiếng Việt",flag:"🇻🇳"},
-  { code: "th",    label: "ภาษาไทย", flag: "🇹🇭" },
-  { code: "ms",    label: "Melayu",  flag: "🇲🇾" },
-  { code: "fa",    label: "فارسی",   flag: "🇮🇷" },
-  { code: "nl",    label: "Nederlands",flag:"🇳🇱"},
-  { code: "pl",    label: "Polski",  flag: "🇵🇱" },
-  { code: "uk",    label: "Українська",flag:"🇺🇦"},
-  { code: "sw",    label: "Kiswahili",flag:"🇰🇪"},
 ];
+
+const WORLD_LANGUAGES = [
+  { code: "zh-CN", label: "中文",       flag: "🇨🇳" },
+  { code: "es",    label: "Español",    flag: "🇪🇸" },
+  { code: "ar",    label: "العربية",    flag: "🇸🇦" },
+  { code: "fr",    label: "Français",   flag: "🇫🇷" },
+  { code: "pt",    label: "Português",  flag: "🇧🇷" },
+  { code: "ru",    label: "Русский",    flag: "🇷🇺" },
+  { code: "de",    label: "Deutsch",    flag: "🇩🇪" },
+  { code: "ja",    label: "日本語",     flag: "🇯🇵" },
+  { code: "ko",    label: "한국어",     flag: "🇰🇷" },
+  { code: "tr",    label: "Türkçe",     flag: "🇹🇷" },
+  { code: "it",    label: "Italiano",   flag: "🇮🇹" },
+  { code: "id",    label: "Indonesia",  flag: "🇮🇩" },
+  { code: "vi",    label: "Tiếng Việt", flag: "🇻🇳" },
+  { code: "th",    label: "ภาษาไทย",   flag: "🇹🇭" },
+  { code: "ms",    label: "Melayu",     flag: "🇲🇾" },
+  { code: "fa",    label: "فارسی",      flag: "🇮🇷" },
+  { code: "nl",    label: "Nederlands", flag: "🇳🇱" },
+  { code: "pl",    label: "Polski",     flag: "🇵🇱" },
+  { code: "uk",    label: "Українська", flag: "🇺🇦" },
+  { code: "sw",    label: "Kiswahili",  flag: "🇰🇪" },
+];
+
+const LANGUAGES = [...INDIAN_LANGUAGES, ...WORLD_LANGUAGES];
 
 declare global {
   interface Window {
