@@ -1,7 +1,6 @@
 import finmitraLogo from "@/assets/finmitra-logo.png";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -112,17 +111,13 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
-          <LanguageSwitcher />
           <Button variant="cta" size="sm" onClick={() => { const el = document.getElementById('download'); el ? el.scrollIntoView({ behavior: 'smooth', block: 'start' }) : (window.location.href = '/#download'); }}>Download App</Button>
         </div>
 
         {/* Mobile/tablet menu button */}
-        <div className="lg:hidden flex items-center gap-2">
-          <LanguageSwitcher />
-          <button className="text-foreground" onClick={() => setOpen(!open)}>
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+        <button className="lg:hidden text-foreground" onClick={() => setOpen(!open)}>
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
       {/* Mobile/tablet menu */}
