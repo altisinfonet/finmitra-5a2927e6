@@ -123,6 +123,7 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+      </div>
 
       {/* Mobile/tablet menu */}
       <AnimatePresence>
