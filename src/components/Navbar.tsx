@@ -137,7 +137,7 @@ const Navbar = ({ barOffset = 0 }: NavbarProps) => {
                 <a
                   key={l.label}
                   href={l.href}
-                  onClick={(e) => { scrollToSection(e, l.href); setOpen(false); }}
+                  onClick={(e) => { e.preventDefault(); setOpen(false); setTimeout(() => { const id = l.href.replace("/#",""); const el = document.getElementById(id); if(el){ el.scrollIntoView({ behavior:"smooth", block:"start" }); window.history.pushState(null,"",l.href); } else { window.location.href = l.href; } }, 250); }}
                   className={`text-sm font-semibold transition-colors ${isActive ? "text-gold" : "text-foreground/80 hover:text-gold"}`}
                 >
                   {l.label}
