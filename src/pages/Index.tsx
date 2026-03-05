@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -21,6 +21,17 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 const Index = () => {
   const location = useLocation();
   const [barVisible, setBarVisible] = useState(true);
+  const [barHeight, setBarHeight] = useState(30);
+  const barRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!barVisible) { setBarHeight(0); return; }
+    const measure = () => { if (barRef.current) setBarHeight(barRef.current.offsetHeight); };
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (barRef.current) ro.observe(barRef.current);
+    return () => ro.disconnect();
+  }, [barVisible]);
 
   useEffect(() => {
     const hash = location.hash;
@@ -37,8 +48,8 @@ const Index = () => {
   return (
     <div className="min-h-screen overflow-x-hidden">
       <ScrollProgressBar />
-      {barVisible && <AnnouncementBar onDismiss={() => setBarVisible(false)} />}
-      <Navbar barOffset={barVisible ? 30 : 0} />
+      {barVisible && <AnnouncementBar ref={barRef} onDismiss={() => setBarVisible(false)} />}
+      <Navbar barOffset={barHeight} />
       <HeroSection />
       <FadeIn threshold={0.1}><FeaturesSection /></FadeIn>
       <FadeIn threshold={0.1} delay={0.05}><HowItWorksSection /></FadeIn>
