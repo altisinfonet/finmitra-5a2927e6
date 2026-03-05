@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 import useAppMode from "@/hooks/useAppMode";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -14,6 +15,7 @@ const TermsOfService = () => {
   const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
+      <ScrollProgressBar />
       {!appMode && <Navbar />}
       <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-3xl`}>
         <h1 className="text-3xl font-bold text-foreground mb-2">Terms of Service</h1>
