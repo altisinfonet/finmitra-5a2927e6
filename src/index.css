@@ -16,13 +16,16 @@
     max-width: 100vw;
   }
   /* Hide default Google Translate toolbar */
-  .goog-te-banner-frame { display: none !important; visibility: hidden !important; }
-  .skiptranslate { display: none !important; }
-  body { top: 0 !important; position: static !important; }
-  iframe.goog-te-banner-frame { display: none !important; }
-  #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+  .goog-te-banner-frame,
+  .goog-te-banner-frame.skiptranslate,
+  iframe.goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; }
+  .skiptranslate { display: none !important; visibility: hidden !important; }
+  body { top: 0 !important; position: static !important; margin-top: 0 !important; }
+  #goog-gt-tt, .goog-te-balloon-frame, .goog-te-ftab-float { display: none !important; }
   .goog-tooltip, .goog-tooltip:hover { display: none !important; }
   .goog-text-highlight { background: none !important; box-shadow: none !important; }
+  font[face="Arial"] { display: none !important; }
+  #google_translate_element { display: none !important; }
 }
 
 /* FinMitra Design System */

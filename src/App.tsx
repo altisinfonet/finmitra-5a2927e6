@@ -13,6 +13,28 @@ import RefundPolicy from "./pages/RefundPolicy";
 
 const queryClient = new QueryClient();
 
+// Aggressively remove the Google Translate top bar via MutationObserver
+if (typeof window !== "undefined") {
+  const removeGoogleBar = () => {
+    // Remove the floating iframe bar
+    document.querySelectorAll("iframe.goog-te-banner-frame, .goog-te-banner-frame").forEach(el => {
+      (el as HTMLElement).style.display = "none";
+      el.remove();
+    });
+    // Fix body position that Google sets to push content down
+    if (document.body.style.top && document.body.style.top !== "0px") {
+      document.body.style.top = "0px";
+    }
+  };
+  const observer = new MutationObserver(removeGoogleBar);
+  document.addEventListener("DOMContentLoaded", () => {
+    removeGoogleBar();
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+  // Also run immediately in case DOM is already ready
+  removeGoogleBar();
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
