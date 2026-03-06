@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Shield, Users, TrendingUp, Award } from "lucide-react";
 import useAppMode from "@/hooks/useAppMode";
+import PageMeta from "@/components/PageMeta";
 
 const stats = [
   { icon: Users, value: "10,000+", label: "Active Agents" },

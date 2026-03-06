@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import useAppMode from "@/hooks/useAppMode";
+import PageMeta from "@/components/PageMeta";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import useAppMode from "@/hooks/useAppMode";
+import PageMeta from "@/components/PageMeta";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-8">
