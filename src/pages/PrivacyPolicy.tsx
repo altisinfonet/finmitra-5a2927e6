@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import useAppMode from "@/hooks/useAppMode";
+import PageMeta from "@/components/PageMeta";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-8">
@@ -15,6 +16,12 @@ const PrivacyPolicy = () => {
   const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="Privacy Policy"
+        description="Read FinMitra's Privacy Policy to understand how Altis Infonet collects, uses, and protects your personal data in the FinMitra mobile application."
+        canonical="/privacy-policy"
+        noIndex
+      />
       <ScrollProgressBar />
       {!appMode && <Navbar />}
       <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-3xl`}>

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import useAppMode from "@/hooks/useAppMode";
+import PageMeta from "@/components/PageMeta";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-8">
@@ -24,6 +25,11 @@ const AccountDataPolicy = () => {
   const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="Account Data Policy"
+        description="Learn how to download or permanently delete your FinMitra account data. Full compliance with Google Play Store and Apple App Store data safety requirements."
+        canonical="/account-data-policy"
+      />
       <ScrollProgressBar />
       {!appMode && <Navbar />}
       <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-3xl`}>

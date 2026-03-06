@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Shield, Users, TrendingUp, Award } from "lucide-react";
 import useAppMode from "@/hooks/useAppMode";
+import PageMeta from "@/components/PageMeta";
 
 const stats = [
   { icon: Users, value: "10,000+", label: "Active Agents" },
@@ -15,6 +16,11 @@ const AboutUs = () => {
   const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="About Us"
+        description="Learn about Altis Infonet Private Limited — the company behind FinMitra, empowering insurance agents and financial distributors across India since 2019."
+        canonical="/about"
+      />
       {!appMode && <Navbar />}
       <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-4xl`}>
 

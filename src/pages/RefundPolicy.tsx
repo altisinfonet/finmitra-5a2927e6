@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import useAppMode from "@/hooks/useAppMode";
+import PageMeta from "@/components/PageMeta";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-8">
@@ -15,6 +16,12 @@ const RefundPolicy = () => {
   const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="Refund Policy"
+        description="Understand FinMitra's subscription refund and cancellation policy. Learn when and how refunds are processed by Altis Infonet Private Limited."
+        canonical="/refund-policy"
+        noIndex
+      />
       <ScrollProgressBar />
       {!appMode && <Navbar />}
       <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-3xl`}>
