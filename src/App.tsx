@@ -13,6 +13,7 @@ import TermsOfService from "./pages/TermsOfService";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import RefundPolicy from "./pages/RefundPolicy";
+import AccountDataPolicy from "./pages/AccountDataPolicy";
 import PageTransition from "./components/PageTransition";
 import PageLoader from "./components/PageLoader";
 
