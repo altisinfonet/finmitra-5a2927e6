@@ -16,6 +16,12 @@ const PrivacyPolicy = () => {
   const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="Privacy Policy"
+        description="Read FinMitra's Privacy Policy to understand how Altis Infonet collects, uses, and protects your personal data in the FinMitra mobile application."
+        canonical="/privacy-policy"
+        noIndex
+      />
       <ScrollProgressBar />
       {!appMode && <Navbar />}
       <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-3xl`}>

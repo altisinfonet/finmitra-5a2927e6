@@ -25,6 +25,11 @@ const AccountDataPolicy = () => {
   const appMode = useAppMode();
   return (
     <div className="min-h-screen bg-background">
+      <PageMeta
+        title="Account Data Policy"
+        description="Learn how to download or permanently delete your FinMitra account data. Full compliance with Google Play Store and Apple App Store data safety requirements."
+        canonical="/account-data-policy"
+      />
       <ScrollProgressBar />
       {!appMode && <Navbar />}
       <main className={`container mx-auto px-4 ${appMode ? "pt-8" : "pt-28"} pb-20 max-w-3xl`}>

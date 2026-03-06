@@ -53,6 +53,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <PageMeta
+        title="CRM for Insurance Agents & Financial Distributors"
+        description="FinMitra is the all-in-one CRM mobile app for insurance agents and financial product distributors. Manage clients, KYC, renewals, FD, mutual funds, loans and more — all from your phone."
+        canonical="/"
+      />
       <ScrollProgressBar />
       {barVisible && <AnnouncementBar onDismiss={() => setBarVisible(false)} />}
       <Navbar barOffset={barHeight} />
