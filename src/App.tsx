@@ -13,6 +13,7 @@ import TermsOfService from "./pages/TermsOfService";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import RefundPolicy from "./pages/RefundPolicy";
+import AccountDataPolicy from "./pages/AccountDataPolicy";
 import PageTransition from "./components/PageTransition";
 import PageLoader from "./components/PageLoader";
 
@@ -46,6 +47,7 @@ const AnimatedRoutes = () => {
           <Route path="/about" element={<PageTransition><AboutUs /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
           <Route path="/refund-policy" element={<PageTransition><RefundPolicy /></PageTransition>} />
+          <Route path="/account-data-policy" element={<PageTransition><AccountDataPolicy /></PageTransition>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
