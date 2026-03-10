@@ -67,6 +67,7 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <AnimatedRoutes />
+          <GdprBanner />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
