@@ -17,6 +17,7 @@ import RefundPolicy from "./pages/RefundPolicy";
 import AccountDataPolicy from "./pages/AccountDataPolicy";
 import PageTransition from "./components/PageTransition";
 import PageLoader from "./components/PageLoader";
+import GdprBanner from "./components/GdprBanner";
 
 const queryClient = new QueryClient();
 
@@ -66,6 +67,7 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <AnimatedRoutes />
+          <GdprBanner />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
