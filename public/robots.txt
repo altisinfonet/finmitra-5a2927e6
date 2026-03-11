@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://finmitra.in/sitemap.xml
+Sitemap: https://finmitra.altisinfonet.com/sitemap.xml
