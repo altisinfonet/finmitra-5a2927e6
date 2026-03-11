@@ -7,7 +7,7 @@ interface PageMetaProps {
   noIndex?: boolean;
 }
 
-const BASE = "https://finmitra.in";
+const BASE = "https://finmitra.altisinfonet.com";
 
 const PageMeta = ({ title, description, canonical, noIndex = false }: PageMetaProps) => {
   const fullTitle = `${title} | FinMitra`;
