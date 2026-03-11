@@ -35,7 +35,7 @@ const GdprBanner = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 80, opacity: 0 }}
           transition={{ type: "spring", stiffness: 260, damping: 28 }}
-          className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[90] w-[calc(100%-2rem)] max-w-xl"
+          className="fixed bottom-4 left-4 right-4 z-[90] sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:w-[calc(100%-2rem)] sm:max-w-xl"
         >
           <div className="bg-[hsl(var(--navy))] text-white rounded-xl shadow-2xl px-4 py-3 flex items-start gap-3">
             <Cookie size={18} className="text-[hsl(var(--gold-light))] mt-0.5 shrink-0" />
